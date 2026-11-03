@@ -102,6 +102,18 @@ A- 3.67, A 4, A+ 4.33, S- 4.67, S 5, S+ 5.33, **S++ 5.67 (cap — S+++, S++++++ 
 Extra pluses on non-S grades (e.g. "B++") count as one plus. Emoji after a grade are
 ignored for math but displayed. DNP / blank / joke text don't count toward averages.
 
+## Publishing
+
+The live site is GitHub Pages, served from the **`main` branch, root folder** of
+`kshime3/Illini-Grades` (public repo; owner approved). Live URL:
+https://kshime3.github.io/Illini-Grades/
+
+To publish: commit on `main` and `git push origin main`. (If a session is assigned
+a different working branch, commit there too, but the site only changes when
+`main` changes; the owner has approved pushing data updates to `main`.)
+Pages takes ~1–2 minutes to rebuild. The page loads `data.json` with a
+cache-buster, so a normal refresh shows new data.
+
 ## Practice / undo
 To try a made-up game, add it, run `check.js`, show the owner, then restore with
 `git checkout data.json` (if not committed) or `git revert <commit>` (if pushed).
