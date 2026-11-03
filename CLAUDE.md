@@ -113,6 +113,8 @@ a different working branch, commit there too, but the site only changes when
 `main` changes; the owner has approved pushing data updates to `main`.)
 Pages takes ~1–2 minutes to rebuild. The page loads `data.json` with a
 cache-buster, so a normal refresh shows new data.
+**If you change `app.js`, `style.css` or `scoring.js`, bump the `?v=N` number on
+all three links in `index.html`**, otherwise phones keep the old code for ~10 minutes.
 
 ## Practice / undo
 To try a made-up game, add it, run `check.js`, show the owner, then restore with
