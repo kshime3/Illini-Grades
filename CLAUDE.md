@@ -23,7 +23,7 @@ copied **word-for-word** from the Google Form (typos and jokes included, e.g.
 Example message:
 > Illinois beat FDU 88-61. Grades: Mirkovic S, Stojakovic A, Vaaks B+, Zvon C …
 > Coaches A, Crowd B, opposing coach B+, refs C-, 2 beverages,
-> arousal level: Steady Eddie, projection 24-7.
+> projection 24-7.
 
 1. **Find the game.** Match the opponent to the next unplayed entry in
    `data.json` → `games` (or by opponent name). If it isn't one of the 32
@@ -49,7 +49,6 @@ Example message:
      "opposingCoach": "B+",
      "refs": "C-",
      "beverages": "2",
-     "arousal": "Steady Eddie",
      "projection": "24-7",
      "notes": ""
    }
@@ -60,6 +59,7 @@ Example message:
      simply left out. "DNP" if they say so.
    - Missing fields: leave them out (don't invent). If the score is missing, ask.
    - Anything extra they say that doesn't fit a field → `notes`.
+   - **Arousal level is no longer tracked** (owner removed it). Don't record or display it.
 4. **Check:** `node tools/check.js` — must end with `OK ✅`. Read any `warn:`
    lines (they flag grades that won't count, e.g. a typo like "B=") and ask if
    something looks like a mistake rather than a joke.

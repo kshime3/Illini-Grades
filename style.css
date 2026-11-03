@@ -224,8 +224,6 @@ tfoot td { font-weight: 800; background: #fff1e6; }
 .vibe { background: #f4f6fa; border-radius: 12px; padding: 10px; min-width: 0; }
 .vibe .lbl { font-size: 10px; letter-spacing: 1px; text-transform: uppercase; color: var(--muted); }
 .vibe .val { font-weight: 700; margin-top: 4px; word-wrap: break-word; }
-.vibe.arousal { grid-column: 1 / -1; background: linear-gradient(90deg, #fff1e6, #f4f6fa); }
-.vibe.arousal .val { font-size: 18px; font-style: italic; }
 .bev { font-size: 18px; letter-spacing: 1px; }
 .mini-grades { display: flex; flex-wrap: wrap; gap: 6px; }
 .mini-grades .mg { display: inline-flex; align-items: center; gap: 4px; background: #f4f6fa; border-radius: 999px; padding: 3px 4px 3px 10px; font-size: 12px; font-weight: 600; }

@@ -43,7 +43,7 @@
       <div class="sb-cell"><div class="sb-label">Illini</div><div class="sb-val">${rec.text}</div>
         <div class="sb-sub">${post.length ? "Post " + S.record(post).text : `${32 - rec.w - rec.l} to play`}</div></div>
       <div class="sb-cell"><div class="sb-label">Leader</div><div class="sb-val">${esc(leaderTxt)}</div>
-        <div class="sb-sub">${lb.gamesPlayed ? leaders[0].total + " pts" : "tip-off soon"}</div></div>
+        <div class="sb-sub">${lb.gamesPlayed ? leaders[0].total + (leaders[0].total === 1 ? " pt" : " pts") : "tip-off soon"}</div></div>
       <div class="sb-cell"><div class="sb-label">Next</div><div class="sb-val">${next ? esc(next.opponent.replace(/^(at|neutral) /, "")) : "🏁"}</div>
         <div class="sb-sub">${next ? siteIcon(next.site) + " " + fmtDate(next.date) : "season over"}</div></div>`;
   }
@@ -161,7 +161,6 @@
           <div class="gc-score">${r.illinois}-${r.opponent}<small>${o === "W" ? "WIN" : "LOSS"}</small></div></div>
         <div class="gc-body">
           <div class="vibes">
-            <div class="vibe arousal"><div class="lbl">😳 Arousal level</div><div class="val">${r.arousal ? "“" + esc(r.arousal) + "”" : "—"}</div></div>
             <div class="vibe"><div class="lbl">🍺 Beverages</div><div class="val">${beverages(r.beverages)}</div></div>
             <div class="vibe"><div class="lbl">📈 Projection</div><div class="val">${esc(r.projection || "—")}</div></div>
             <div class="vibe"><div class="lbl">🧑‍🏫 Coaches</div><div class="val">${gradeChip(r.coaches)}</div></div>
