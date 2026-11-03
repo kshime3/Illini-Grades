@@ -124,29 +124,7 @@
         "Krazy": "W",
         "Ross": "W"
       },
-      "result": {
-        "illinois": 91,
-        "opponent": 58,
-        "grades": {
-          "David Mirkovic": "S+",
-          "Andrej Stojakovic": "A",
-          "Stefan Vaaks": "B+",
-          "Lucas Morillo": "B",
-          "Zvonimir Ivisic": "A-",
-          "Tomislav Ivisic": "C+",
-          "Jake Davis": "B-",
-          "Zavier Zens": "C",
-          "Blake Fagbemi": "DNP"
-        },
-        "coaches": "A",
-        "crowd": "B+",
-        "opposingCoach": "C",
-        "refs": "B-",
-        "beverages": "3",
-        "arousal": "Practice Wood",
-        "projection": "24-8",
-        "notes": "PRACTICE UPDATE — fake game, will be removed"
-      }
+      "result": null
     },
     {
       "id": 2,
