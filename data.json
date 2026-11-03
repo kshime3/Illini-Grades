@@ -11,7 +11,9 @@
       "number": 0,
       "name": "David Mirkovic",
       "display": "Mirkovic",
-      "aliases": []
+      "aliases": [
+        "Mirk"
+      ]
     },
     {
       "number": 1,
@@ -26,7 +28,8 @@
       "name": "Andrej Stojakovic",
       "display": "Stojakovic",
       "aliases": [
-        "Stojo"
+        "Stojo",
+        "Stoj"
       ]
     },
     {
@@ -88,7 +91,8 @@
       "name": "Landon Davis",
       "display": "Landon Davis",
       "aliases": [
-        "Landon"
+        "Landon",
+        "L Davis"
       ]
     },
     {
@@ -108,7 +112,8 @@
       "name": "Zvonimir Ivisic",
       "display": "Zvon",
       "aliases": [
-        "Zvonimir"
+        "Zvonimir",
+        "Z Ivisic"
       ]
     }
   ],
@@ -124,7 +129,34 @@
         "Krazy": "W",
         "Ross": "W"
       },
-      "result": null
+      "result": {
+        "illinois": 120,
+        "opponent": 45,
+        "grades": {
+          "Jake Davis": "B-",
+          "Tomislav Ivisic": "A-",
+          "Ethan Brown": "A+",
+          "Quentin Coleman": "A+",
+          "Andrej Stojakovic": "S-",
+          "Zavier Zens": "A+",
+          "Stefan Vaaks": "A+",
+          "Lucas Morillo": "B+",
+          "Landon Davis": "B+",
+          "Jason Jakstys": "B",
+          "Zvonimir Ivisic": "B",
+          "Blake Fagbemi": "A",
+          "Quentin McCoy": "C+",
+          "Lincoln Williams": "DNP",
+          "David Mirkovic": "DNP"
+        },
+        "coaches": "S+",
+        "crowd": "B+",
+        "opposingCoach": "D",
+        "refs": "A",
+        "beverages": "2",
+        "projection": "23-9",
+        "notes": "BLOWOUT"
+      }
     },
     {
       "id": 2,
