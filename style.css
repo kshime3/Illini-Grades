@@ -159,8 +159,13 @@ thead th { position: sticky; top: 0; background: var(--navy); color: #fff; font-
 tbody tr:nth-child(even) td { background: #fafbfd; }
 td.game { text-align: left; white-space: normal; min-width: 104px; }
 @media (max-width: 420px) {
-  th, td { padding: 7px 3px; }
-  .result-pill { font-size: 11px; padding: 3px 6px; }
+  th, td { padding: 7px 2px; }
+  thead th { font-size: 11px; }
+  .result-pill { font-size: 10px; padding: 3px 5px; }
+  .pick { width: 25px; height: 25px; font-size: 12px; }
+  td.game { min-width: 86px; }
+  td.game .opp { font-size: 12px; }
+  td.game .meta { font-size: 10px; }
 }
 td.game .opp { font-weight: 700; }
 td.game .meta { color: var(--muted); font-size: 11px; }
@@ -270,3 +275,28 @@ footer .ilfoot { font-family: "Bebas Neue"; font-size: 24px; color: var(--navy);
   .tabs button span { font-size: 13px; }
   th, td { padding: 9px 10px; }
 }
+
+/* ---------- Michigan State fan theme (friendThemes: "msu") ---------- */
+:root { --msu: #18453B; --msu-2: #2c6e5c; --msu-light: #e6f0ec; }
+.spartan-badge {
+  display: inline-block; vertical-align: middle; margin-left: 6px;
+  font: 800 10px Inter, sans-serif; letter-spacing: .5px; text-transform: uppercase;
+  background: var(--msu); color: #fff; padding: 2px 7px; border-radius: 999px; white-space: nowrap;
+}
+.lb-row.f-msu {
+  border-left-color: var(--msu);
+  background: repeating-linear-gradient(135deg, var(--msu-light) 0 14px, #fff 14px 28px);
+}
+.lb-row.f-msu .lb-name { color: var(--msu); }
+.lb-row.f-msu .lb-pts { color: var(--msu); }
+.lb-row.f-msu .bar > i { background: linear-gradient(90deg, var(--msu), #8fd1b5); }
+thead th.f-msu { background: var(--msu); }
+td.pc.f-msu { background: var(--msu-light) !important; }
+td.pc.f-msu .pick:not(.right):not(.wrong) { background: #fff; color: var(--msu); border-color: var(--msu); }
+tfoot td.pc.f-msu { color: var(--msu); }
+tr.rival td { background: #f3f8f6 !important; }
+tr.rival td:first-child { box-shadow: inset 4px 0 0 var(--msu); }
+.fname.f-msu { color: var(--msu); font-weight: 800; }
+.q-ans.f-msu { background: var(--msu-light); border-left: 4px solid var(--msu); }
+.q-ans.f-msu .who { color: var(--msu); }
+.q-ans.f-msu .who::after { content: " 🛡️"; }

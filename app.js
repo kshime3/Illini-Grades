@@ -6,6 +6,12 @@
   const esc = (s) => String(s == null ? "" : s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
   const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
   const fmtDate = (iso) => { if (!iso) return ""; const [, m, d] = iso.split("-").map(Number); return `${MONTHS[m - 1]} ${d}`; };
+  // Per-friend themes from data.json → friendThemes (e.g. {"Don": "msu"})
+  let THEMES = {};
+  const th = (f) => (THEMES[f] ? " f-" + THEMES[f] : "");
+  const badge = (f) => (THEMES[f] === "msu" ? ` <span class="spartan-badge">🛡️ Spartan</span>` : "");
+  const fname = (f) => `<span class="fname${th(f)}">${esc(f)}</span>`;
+  const isMsuGame = (g) => /michigan st/i.test(g.opponent) && Object.values(THEMES).includes("msu");
   const siteIcon = (s) => (s === "home" ? "🏠" : s === "away" ? "✈️" : "⚖️");
 
   // ---------- small renderers ----------
@@ -64,9 +70,9 @@
     const rows = lb.rows.map((r) => {
       const imp = S.impliedRecord(data, r.friend);
       const pct = played.length ? Math.round((r.correct / played.length) * 100) : 0;
-      return `<div class="lb-row r${r.rank}">
+      return `<div class="lb-row r${r.rank}${th(r.friend)}">
         <div class="lb-rank">${r.rank === 1 && lb.gamesPlayed ? "👑" : "#" + r.rank}</div>
-        <div><div class="lb-name">${esc(r.friend)}</div>
+        <div><div class="lb-name">${esc(r.friend)}${badge(r.friend)}</div>
           <div class="lb-detail">Picks ${r.correct}-${r.wrong}${played.length ? ` (${pct}%)` : ""} · bonus ${r.bonusPts} · predicted ${imp.text}</div>
           <div class="bar"><i style="width:${pct}%"></i></div></div>
         <div class="lb-pts">${r.total}<small>PTS</small></div></div>`;
@@ -94,18 +100,18 @@
       const cells = F.map((f) => {
         const p = g.picks[f];
         const cls = o ? (p === o ? "right" : "wrong") : "";
-        return `<td><span class="pick ${cls}">${p}</span></td>`;
+        return `<td class="pc${th(f)}"><span class="pick ${cls}">${p}</span></td>`;
       }).join("");
-      return `<tr class="${g.id === nextId ? "next" : ""}"><td>${g.id}</td>
-        <td class="game"><div class="opp">${esc(g.opponent)}</div><div class="meta">${siteIcon(g.site)} ${fmtDate(g.date)} · ${esc(g.tv)}</div></td>
+      return `<tr class="${g.id === nextId ? "next" : ""}${isMsuGame(g) ? " rival" : ""}"><td>${g.id}</td>
+        <td class="game"><div class="opp">${esc(g.opponent)}${isMsuGame(g) ? ` <span class="spartan-badge">⚔️ Rivalry</span>` : ""}</div><div class="meta">${siteIcon(g.site)} ${fmtDate(g.date)} · ${esc(g.tv)}</div></td>
         <td>${res}</td>${cells}</tr>`;
     }).join("");
-    const foot = F.map((f) => `<td>${S.impliedRecord(data, f).text}</td>`).join("");
+    const foot = F.map((f) => `<td class="pc${th(f)}">${S.impliedRecord(data, f).text}</td>`).join("");
     $("#tab-picks").innerHTML = `
       <h2>The Picks <small>straight from the form</small></h2>
       <p class="hint">🟢 = nailed it · 🔴 = whiffed · highlighted row = next game</p>
       <div class="table-wrap"><table>
-        <thead><tr><th>#</th><th style="text-align:left">Game</th><th>Result</th>${F.map((f) => `<th>${esc(f)}</th>`).join("")}</tr></thead>
+        <thead><tr><th>#</th><th style="text-align:left">Game</th><th>Result</th>${F.map((f) => `<th class="${th(f).trim()}">${THEMES[f] === "msu" ? "🛡️" : ""}${esc(f)}</th>`).join("")}</tr></thead>
         <tbody>${body}</tbody>
         <tfoot><tr><td></td><td class="game">Predicted record</td><td></td>${foot}</tr></tfoot>
       </table></div>`;
@@ -154,7 +160,7 @@
         .filter((x) => x.raw && !x.v.dnp);
       const best = graded.filter((x) => x.v.value != null).sort((a, b) => b.v.value - a.v.value)[0];
       const mini = graded.map((x) => `<span class="mg">${esc(x.p.display)} ${gradeChip(x.raw)}</span>`).join("");
-      const pickLine = g.picks ? F.map((f) => `${esc(f)} <b class="${g.picks[f] === o ? "ok" : "no"}">${g.picks[f] === o ? "✓" : "✗"}</b>`).join(" · ") : "Postseason — no picks on the line";
+      const pickLine = g.picks ? F.map((f) => `${fname(f)} <b class="${g.picks[f] === o ? "ok" : "no"}">${g.picks[f] === o ? "✓" : "✗"}</b>`).join(" · ") : "Postseason — no picks on the line";
       return `<article class="game-card">
         <div class="gc-head ${o}"><div><div class="opp">${o === "W" ? "🔥" : "🧊"} ${esc(g.round ? g.round + ": " : "")}${esc(g.opponent)}</div>
           <div class="date">${siteIcon(g.site)} ${fmtDate(g.date)}${g.tv ? " · " + esc(g.tv) : ""}</div></div>
@@ -191,7 +197,7 @@
         <span class="q-worth">3 to closest · <span class="badge ${ilFinal ? "final" : ""}">${ilFinal ? "final" : "live"}</span></span></div>
       <div class="q-answers">${F.map((f) => {
         const pts = lb.rows.find((r) => r.friend === f).bonus.il_record;
-        return `<div class="q-ans"><span class="who">${esc(f)}</span><span class="txt">${S.impliedRecord(data, f).text}</span>
+        return `<div class="q-ans${th(f)}"><span class="who">${esc(f)}</span><span class="txt">${S.impliedRecord(data, f).text}</span>
           <span class="pts ${pts ? "got" : ""}">${ilFinal ? "+" + pts : ""}</span></div>`;
       }).join("")}</div>
       <div class="q-actual">Currently: <b>${rec.text}</b></div></div>`;
@@ -203,7 +209,7 @@
           <span class="q-worth">${esc(q.points)} · <span class="badge ${fin ? "final" : ""}">${fin ? "final" : "open"}</span></span></div>
         <div class="q-answers">${F.map((f) => {
           const pts = s.points[f];
-          return `<div class="q-ans"><span class="who">${esc(f)}</span><span class="txt">${esc(q.answers[f])}</span>
+          return `<div class="q-ans${th(f)}"><span class="who">${esc(f)}</span><span class="txt">${esc(q.answers[f])}</span>
             <span class="pts ${pts ? "got" : ""}">${fin ? "+" + (pts || 0) : ""}</span></div>`;
         }).join("")}</div>
         ${q.actual != null && q.actual !== "" ? `<div class="q-actual">Answer: <b>${esc(q.actual)}</b></div>` : ""}</div>`;
@@ -238,6 +244,7 @@
     .then((r) => { if (!r.ok) throw new Error(r.status); return r.json(); })
     .then((data) => {
       $("#season").textContent = data.season;
+      THEMES = data.friendThemes || {};
       const lb = S.leaderboard(data);
       const av = S.averages(data);
       renderScoreboard(data, lb);

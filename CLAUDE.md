@@ -1,7 +1,8 @@
 # Illini Grades — how to update after a game
 
 This repo is a small static website for an Illinois men's basketball predictions
-contest between three friends: **Shime, Krazy, Ross**. The owner (Shime) is not
+contest between four friends: **Shime, Krazy, Ross, Don** (Don was a late entry,
+submitted 11/2 before tip-off). The owner (Shime) is not
 technical. After each game they paste a plain-English summary; your job is to
 update the data, check it, and republish. Ask before any big decision.
 
@@ -88,6 +89,14 @@ draft happens, transfers known), update `questions` in `data.json`:
   Transfers = 1 point per correctly named player (the "assistant coach" line counts if it happens).
 - The "closest Illinois record" bonus is automatic once all 32 games have results.
 - Note: "Michigan St. Record" really is Michigan State's record (one friend is an MSU fan).
+
+### Friends & themes
+`friends` in `data.json` lists everyone in the contest; every game's `picks` and every
+question's `answers` (and `values`, where present) must have an entry for each friend.
+`friendThemes` gives a friend a special look: **Don is the Michigan State fan →
+`"msu"`** (Spartan green, 🛡️ badge, his own column, and the Michigan St. game is
+tagged "Rivalry"). To add a late entry, parse their form row by tabs: the form has
+"Seattle" twice and the **2nd Seattle column is always blank — skip it**, leaving 32 picks.
 
 ## Rules baked into scoring.js (confirmed with owner — don't change without asking)
 
