@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Illini Grades 2026-27</title>
+  <meta name="description" content="Illinois basketball predictions contest, player grades and vibes.">
+  <meta name="theme-color" content="#13294B">
+  <meta property="og:title" content="Illini Grades 2026-27 🏀">
+  <meta property="og:description" content="Who's winning the predictions contest, plus every grade, beverage and arousal level.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏀</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="hero">
+    <div class="court-lines" aria-hidden="true"></div>
+    <div class="hero-inner">
+      <div class="ball" aria-hidden="true">🏀</div>
+      <h1>ILLINI GRADES <span id="season"></span></h1>
+      <p class="tag">The official unofficial predictions contest &amp; report card</p>
+      <div class="scoreboard" id="scoreboard"></div>
+    </div>
+  </header>
+
+  <nav class="tabs" id="tabs" role="tablist">
+    <button role="tab" data-tab="standings" aria-selected="true">🏆<span>Standings</span></button>
+    <button role="tab" data-tab="picks">🔮<span>Picks</span></button>
+    <button role="tab" data-tab="grades">📝<span>Grades</span></button>
+    <button role="tab" data-tab="log">🍺<span>Game Log</span></button>
+    <button role="tab" data-tab="questions">❓<span>Season Q's</span></button>
+  </nav>
+
+  <main>
+    <section id="tab-standings" data-tab="standings" class="panel active"></section>
+    <section id="tab-picks" data-tab="picks" class="panel"></section>
+    <section id="tab-grades" data-tab="grades" class="panel"></section>
+    <section id="tab-log" data-tab="log" class="panel"></section>
+    <section id="tab-questions" data-tab="questions" class="panel"></section>
+  </main>
+
+  <footer>
+    <p>Grade scale: F- … A+, then S-, S, S+, S++ (anything past S++ still counts as S++). DNP and joke grades don't count toward averages.</p>
+    <p>Points: 1 per correct game pick · closest Illinois record 3 · seed 3 exact / 1 off-by-one · best win, worst loss, MVP 2 each · closest MSU record 3 · suspensions, draftees, DC hire 2 each · 1 per correct transfer.</p>
+    <p class="ilfoot">I-L-L! 🧡💙</p>
+  </footer>
+
+  <script src="scoring.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

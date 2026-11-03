@@ -1,0 +1,676 @@
+{
+  "_readme": "ALL site data lives in this one file. See CLAUDE.md for how to add a game. Picks/answers are copied word-for-word from the Google Form.",
+  "season": "2026-27",
+  "friends": [
+    "Shime",
+    "Krazy",
+    "Ross"
+  ],
+  "roster": [
+    {
+      "number": 0,
+      "name": "David Mirkovic",
+      "display": "Mirkovic",
+      "aliases": []
+    },
+    {
+      "number": 1,
+      "name": "Lincoln Williams",
+      "display": "Williams",
+      "aliases": [
+        "Lincoln"
+      ]
+    },
+    {
+      "number": 2,
+      "name": "Andrej Stojakovic",
+      "display": "Stojakovic",
+      "aliases": [
+        "Stojo"
+      ]
+    },
+    {
+      "number": 5,
+      "name": "Quentin McCoy",
+      "display": "McCoy",
+      "aliases": []
+    },
+    {
+      "number": 7,
+      "name": "Stefan Vaaks",
+      "display": "Vaaks",
+      "aliases": []
+    },
+    {
+      "number": 8,
+      "name": "Blake Fagbemi",
+      "display": "Fagbemi",
+      "aliases": [
+        "Fagemi"
+      ]
+    },
+    {
+      "number": 11,
+      "name": "Quentin Coleman",
+      "display": "Coleman",
+      "aliases": []
+    },
+    {
+      "number": 13,
+      "name": "Tomislav Ivisic",
+      "display": "Tomi",
+      "aliases": [
+        "Tomislav"
+      ]
+    },
+    {
+      "number": 15,
+      "name": "Jake Davis",
+      "display": "Jake Davis",
+      "aliases": [
+        "Jake"
+      ]
+    },
+    {
+      "number": 22,
+      "name": "Zavier Zens",
+      "display": "Zens",
+      "aliases": []
+    },
+    {
+      "number": 23,
+      "name": "Lucas Morillo",
+      "display": "Morillo",
+      "aliases": []
+    },
+    {
+      "number": 27,
+      "name": "Landon Davis",
+      "display": "Landon Davis",
+      "aliases": [
+        "Landon"
+      ]
+    },
+    {
+      "number": 31,
+      "name": "Jason Jakstys",
+      "display": "Jakstys",
+      "aliases": []
+    },
+    {
+      "number": 34,
+      "name": "Ethan Brown",
+      "display": "Brown",
+      "aliases": []
+    },
+    {
+      "number": 44,
+      "name": "Zvonimir Ivisic",
+      "display": "Zvon",
+      "aliases": [
+        "Zvonimir"
+      ]
+    }
+  ],
+  "games": [
+    {
+      "id": 1,
+      "date": "2026-11-02",
+      "opponent": "FDU",
+      "site": "home",
+      "tv": "BTN",
+      "picks": {
+        "Shime": "W",
+        "Krazy": "W",
+        "Ross": "W"
+      },
+      "result": null
+    },
+    {
+      "id": 2,
+      "date": "2026-11-05",
+      "opponent": "Penn",
+      "site": "home",
+      "tv": "FS1",
+      "picks": {
+        "Shime": "W",
+        "Krazy": "W",
+        "Ross": "W"
+      },
+      "result": null
+    },
+    {
+      "id": 3,
+      "date": "2026-11-10",
+      "opponent": "at Texas Tech",
+      "site": "away",
+      "tv": "Peacock",
+      "picks": {
+        "Shime": "L",
+        "Krazy": "L",
+        "Ross": "L"
+      },
+      "result": null
+    },
+    {
+      "id": 4,
+      "date": "2026-11-13",
+      "opponent": "Sam Houston St",
+      "site": "home",
+      "tv": "B1G+",
+      "picks": {
+        "Shime": "W",
+        "Krazy": "W",
+        "Ross": "W"
+      },
+      "result": null
+    },
+    {
+      "id": 5,
+      "date": "2026-11-17",
+      "opponent": "at Duke",
+      "site": "away",
+      "tv": "ESPN",
+      "picks": {
+        "Shime": "L",
+        "Krazy": "L",
+        "Ross": "L"
+      },
+      "result": null
+    },
+    {
+      "id": 6,
+      "date": "2026-11-20",
+      "opponent": "EIU",
+      "site": "home",
+      "tv": "BTN",
+      "picks": {
+        "Shime": "W",
+        "Krazy": "W",
+        "Ross": "W"
+      },
+      "result": null
+    },
+    {
+      "id": 7,
+      "date": "2026-11-23",
+      "opponent": "Winthrop",
+      "site": "home",
+      "tv": "BTN",
+      "picks": {
+        "Shime": "W",
+        "Krazy": "W",
+        "Ross": "W"
+      },
+      "result": null
+    },
+    {
+      "id": 8,
+      "date": "2026-11-27",
+      "opponent": "WKU",
+      "site": "home",
+      "tv": "FS1",
+      "picks": {
+        "Shime": "W",
+        "Krazy": "W",
+        "Ross": "W"
+      },
+      "result": null
+    },
+    {
+      "id": 9,
+      "date": "2026-12-04",
+      "opponent": "neutral UCONN",
+      "site": "neutral",
+      "tv": "FOX",
+      "picks": {
+        "Shime": "W",
+        "Krazy": "L",
+        "Ross": "L"
+      },
+      "result": null
+    },
+    {
+      "id": 10,
+      "date": "2026-12-08",
+      "opponent": "at Minnesota",
+      "site": "away",
+      "tv": "Peacock",
+      "picks": {
+        "Shime": "W",
+        "Krazy": "W",
+        "Ross": "W"
+      },
+      "result": null
+    },
+    {
+      "id": 11,
+      "date": "2026-12-12",
+      "opponent": "Penn St",
+      "site": "home",
+      "tv": "FS1",
+      "picks": {
+        "Shime": "W",
+        "Krazy": "W",
+        "Ross": "W"
+      },
+      "result": null
+    },
+    {
+      "id": 12,
+      "date": "2026-12-20",
+      "opponent": "neutral Missouri",
+      "site": "neutral",
+      "tv": "ESPN2",
+      "picks": {
+        "Shime": "W",
+        "Krazy": "W",
+        "Ross": "W"
+      },
+      "result": null
+    },
+    {
+      "id": 13,
+      "date": "2026-12-29",
+      "opponent": "Seattle",
+      "site": "home",
+      "tv": "B1G+",
+      "picks": {
+        "Shime": "W",
+        "Krazy": "W",
+        "Ross": "W"
+      },
+      "result": null
+    },
+    {
+      "id": 14,
+      "date": "2027-01-02",
+      "opponent": "at Wisconsin",
+      "site": "away",
+      "tv": "FOX",
+      "picks": {
+        "Shime": "L",
+        "Krazy": "L",
+        "Ross": "W"
+      },
+      "result": null
+    },
+    {
+      "id": 15,
+      "date": "2027-01-05",
+      "opponent": "Purdont",
+      "site": "home",
+      "tv": "Peacock",
+      "picks": {
+        "Shime": "W",
+        "Krazy": "W",
+        "Ross": "W"
+      },
+      "result": null
+    },
+    {
+      "id": 16,
+      "date": "2027-01-09",
+      "opponent": "Ohio St.",
+      "site": "home",
+      "tv": "CBS",
+      "picks": {
+        "Shime": "W",
+        "Krazy": "W",
+        "Ross": "W"
+      },
+      "result": null
+    },
+    {
+      "id": 17,
+      "date": "2027-01-13",
+      "opponent": "at Northwestern",
+      "site": "away",
+      "tv": "BTN",
+      "picks": {
+        "Shime": "W",
+        "Krazy": "W",
+        "Ross": "W"
+      },
+      "result": null
+    },
+    {
+      "id": 18,
+      "date": "2027-01-16",
+      "opponent": "at Maryland",
+      "site": "away",
+      "tv": "Peacock",
+      "picks": {
+        "Shime": "W",
+        "Krazy": "L",
+        "Ross": "L"
+      },
+      "result": null
+    },
+    {
+      "id": 19,
+      "date": "2027-01-19",
+      "opponent": "Nebraska",
+      "site": "home",
+      "tv": "Peacock",
+      "picks": {
+        "Shime": "L",
+        "Krazy": "W",
+        "Ross": "W"
+      },
+      "result": null
+    },
+    {
+      "id": 20,
+      "date": "2027-01-24",
+      "opponent": "at Indiana",
+      "site": "away",
+      "tv": "CBS",
+      "picks": {
+        "Shime": "L",
+        "Krazy": "L",
+        "Ross": "W"
+      },
+      "result": null
+    },
+    {
+      "id": 21,
+      "date": "2027-01-27",
+      "opponent": "USC",
+      "site": "home",
+      "tv": "BTN",
+      "picks": {
+        "Shime": "W",
+        "Krazy": "W",
+        "Ross": "W"
+      },
+      "result": null
+    },
+    {
+      "id": 22,
+      "date": "2027-01-30",
+      "opponent": "neutral North Carolina",
+      "site": "neutral",
+      "tv": "TBD",
+      "picks": {
+        "Shime": "L",
+        "Krazy": "W",
+        "Ross": "W"
+      },
+      "result": null
+    },
+    {
+      "id": 23,
+      "date": "2027-02-02",
+      "opponent": "UCLA",
+      "site": "home",
+      "tv": "Peacock",
+      "picks": {
+        "Shime": "W",
+        "Krazy": "W",
+        "Ross": "L"
+      },
+      "result": null
+    },
+    {
+      "id": 24,
+      "date": "2027-02-05",
+      "opponent": "Michigan St.",
+      "site": "home",
+      "tv": "FOX",
+      "picks": {
+        "Shime": "W",
+        "Krazy": "L",
+        "Ross": "L"
+      },
+      "result": null
+    },
+    {
+      "id": 25,
+      "date": "2027-02-09",
+      "opponent": "at Michigan",
+      "site": "away",
+      "tv": "Peacock",
+      "picks": {
+        "Shime": "L",
+        "Krazy": "W",
+        "Ross": "L"
+      },
+      "result": null
+    },
+    {
+      "id": 26,
+      "date": "2027-02-12",
+      "opponent": "at Purdont",
+      "site": "away",
+      "tv": "FOX",
+      "picks": {
+        "Shime": "L",
+        "Krazy": "L",
+        "Ross": "L"
+      },
+      "result": null
+    },
+    {
+      "id": 27,
+      "date": "2027-02-16",
+      "opponent": "Northwestern",
+      "site": "home",
+      "tv": "BTN",
+      "picks": {
+        "Shime": "W",
+        "Krazy": "W",
+        "Ross": "W"
+      },
+      "result": null
+    },
+    {
+      "id": 28,
+      "date": "2027-02-20",
+      "opponent": "at Oregon",
+      "site": "away",
+      "tv": "FOX",
+      "picks": {
+        "Shime": "L",
+        "Krazy": "W",
+        "Ross": "W"
+      },
+      "result": null
+    },
+    {
+      "id": 29,
+      "date": "2027-02-23",
+      "opponent": "at Washington",
+      "site": "away",
+      "tv": "FS1",
+      "picks": {
+        "Shime": "W",
+        "Krazy": "W",
+        "Ross": "W"
+      },
+      "result": null
+    },
+    {
+      "id": 30,
+      "date": "2027-02-28",
+      "opponent": "Wisconsin",
+      "site": "home",
+      "tv": "CBS",
+      "picks": {
+        "Shime": "W",
+        "Krazy": "W",
+        "Ross": "W"
+      },
+      "result": null
+    },
+    {
+      "id": 31,
+      "date": "2027-03-03",
+      "opponent": "at Buttgers",
+      "site": "away",
+      "tv": "BTN",
+      "picks": {
+        "Shime": "W",
+        "Krazy": "W",
+        "Ross": "W"
+      },
+      "result": null
+    },
+    {
+      "id": 32,
+      "date": "2027-03-06",
+      "opponent": "Iowa",
+      "site": "home",
+      "tv": "FOX",
+      "picks": {
+        "Shime": "W",
+        "Krazy": "W",
+        "Ross": "W"
+      },
+      "result": null
+    }
+  ],
+  "postseason": [],
+  "questions": [
+    {
+      "id": "seed",
+      "label": "Tourney Seed",
+      "type": "seed",
+      "points": "3 exact / 1 if off by one",
+      "answers": {
+        "Shime": "3 Seed",
+        "Krazy": "3 Seed",
+        "Ross": "3 Seed"
+      },
+      "values": {
+        "Shime": 3,
+        "Krazy": 3,
+        "Ross": 3
+      },
+      "actual": null
+    },
+    {
+      "id": "best_win",
+      "label": "Best Win",
+      "type": "judged",
+      "points": "2 if right",
+      "answers": {
+        "Shime": "Uconn",
+        "Krazy": "At Michigan",
+        "Ross": "@ Indiana"
+      },
+      "actual": null,
+      "awarded": null
+    },
+    {
+      "id": "worst_loss",
+      "label": "Worst Loss",
+      "type": "judged",
+      "points": "2 if right",
+      "answers": {
+        "Shime": "At Wisconsin I guess",
+        "Krazy": "At maryland",
+        "Ross": "@ Maryland"
+      },
+      "actual": null,
+      "awarded": null
+    },
+    {
+      "id": "mvp",
+      "label": "MVP",
+      "type": "judged",
+      "points": "2 if right",
+      "answers": {
+        "Shime": "Mirkovic",
+        "Krazy": "Stojakovic",
+        "Ross": "Stojakovic"
+      },
+      "actual": null,
+      "awarded": null
+    },
+    {
+      "id": "msu_record",
+      "label": "Michigan St. Record (32 games)",
+      "type": "closest_record",
+      "points": "3 to closest",
+      "answers": {
+        "Shime": "22-10",
+        "Krazy": "25 -7",
+        "Ross": "25-7"
+      },
+      "values": {
+        "Shime": "22-10",
+        "Krazy": "25-7",
+        "Ross": "25-7"
+      },
+      "actual": null
+    },
+    {
+      "id": "suspended",
+      "label": "Illinois players to be suspended",
+      "type": "exact",
+      "points": "2 if exact",
+      "answers": {
+        "Shime": "0",
+        "Krazy": "0",
+        "Ross": "0"
+      },
+      "values": {
+        "Shime": 0,
+        "Krazy": 0,
+        "Ross": 0
+      },
+      "actual": null,
+      "worth": 2
+    },
+    {
+      "id": "drafted",
+      "label": "Players to be drafted in 2027",
+      "type": "exact",
+      "points": "2 if exact",
+      "answers": {
+        "Shime": "3",
+        "Krazy": "2",
+        "Ross": "2"
+      },
+      "values": {
+        "Shime": 3,
+        "Krazy": 2,
+        "Ross": 2
+      },
+      "actual": null,
+      "worth": 2
+    },
+    {
+      "id": "transfers",
+      "label": "Players to transfer post season",
+      "type": "judged",
+      "points": "1 per correct name",
+      "answers": {
+        "Shime": "Morillo, Blake Fagemi, We also lose an assistant coach",
+        "Krazy": "Morillo, Lincoln Williams",
+        "Ross": "Morillo, Lincoln Williams, We also lose an assistant coach"
+      },
+      "actual": null,
+      "awarded": null
+    },
+    {
+      "id": "dc_hire",
+      "label": "Illinois Hires a Defensive Coordinator (FB) prior to Jan 1",
+      "type": "exact",
+      "points": "2 if right",
+      "answers": {
+        "Shime": "Yes",
+        "Krazy": "Yes",
+        "Ross": "No"
+      },
+      "values": {
+        "Shime": "Yes",
+        "Krazy": "Yes",
+        "Ross": "No"
+      },
+      "actual": null,
+      "worth": 2
+    }
+  ]
+}

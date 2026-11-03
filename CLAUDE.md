@@ -1,0 +1,107 @@
+# Illini Grades — how to update after a game
+
+This repo is a small static website for an Illinois men's basketball predictions
+contest between three friends: **Shime, Krazy, Ross**. The owner (Shime) is not
+technical. After each game they paste a plain-English summary; your job is to
+update the data, check it, and republish. Ask before any big decision.
+
+## Files
+
+| File | What it is | Edit after a game? |
+|---|---|---|
+| `data.json` | **All data**: roster, 32 games + picks, postseason, season questions | **Yes, only this** |
+| `scoring.js` | Grade scale, points system, averages (shared by site + check script) | No |
+| `index.html`, `app.js`, `style.css` | The website (reads `data.json`) | No |
+| `tools/check.js` | Validates data and prints leaderboard/averages | Run it |
+
+Never hard-code data into the HTML/JS. Picks and season-question answers are
+copied **word-for-word** from the Google Form (typos and jokes included, e.g.
+"Purdont", "Buttgers", "Blake Fagemi", "At Wisconsin I guess") — never "fix" them.
+
+## The update routine
+
+Example message:
+> Illinois beat FDU 88-61. Grades: Mirkovic S, Stojakovic A, Vaaks B+, Zvon C …
+> Coaches A, Crowd B, opposing coach B+, refs C-, 2 beverages,
+> arousal level: Steady Eddie, projection 24-7.
+
+1. **Find the game.** Match the opponent to the next unplayed entry in
+   `data.json` → `games` (or by opponent name). If it isn't one of the 32
+   (Big Ten Tournament / NCAA), add it to `postseason` instead (see below).
+   If it's ambiguous (e.g. Northwestern / Wisconsin / Purdont appear twice:
+   home and "at"), use the date / home-away / next-unplayed logic, and ask if still unsure.
+2. **Match every player name** to the roster:
+   `node tools/check.js --find Mirkovic Zvon Davis`
+   - One match → use the full roster `name` as the key in `grades`.
+   - **NO MATCH or AMBIGUOUS → stop and ask the owner. Never guess.**
+     Known ambiguities: "Davis" (Jake vs Landon), "Quentin" (McCoy vs Coleman),
+     "Ivisic" (Tomi/Tomislav vs Zvon/Zvonimir).
+   - If they confirm a new nickname, add it to that player's `aliases`.
+   - If a genuinely new player joins, ask, then add them to `roster`.
+3. **Fill in `result`** for that game (replace `null`):
+   ```json
+   "result": {
+     "illinois": 88,
+     "opponent": 61,
+     "grades": { "David Mirkovic": "S", "Andrej Stojakovic": "A", "Lucas Morillo": "DNP" },
+     "coaches": "A",
+     "crowd": "B",
+     "opposingCoach": "B+",
+     "refs": "C-",
+     "beverages": "2",
+     "arousal": "Steady Eddie",
+     "projection": "24-7",
+     "notes": ""
+   }
+   ```
+   - `illinois` / `opponent` are numbers; win/loss is computed from them.
+   - Store every value **exactly as typed** (strings), including emoji and jokes
+     ("S++🐐", "1 bottle of wine", "just checked in"). Players not mentioned are
+     simply left out. "DNP" if they say so.
+   - Missing fields: leave them out (don't invent). If the score is missing, ask.
+   - Anything extra they say that doesn't fit a field → `notes`.
+4. **Check:** `node tools/check.js` — must end with `OK ✅`. Read any `warn:`
+   lines (they flag grades that won't count, e.g. a typo like "B=") and ask if
+   something looks like a mistake rather than a joke.
+5. **Preview (optional but good):** `python3 -m http.server 8000` and open
+   the site, or screenshot with Playwright at 390px wide.
+6. **Publish:** commit `data.json` with a message like
+   `Game 1: Illinois 88, FDU 61` and push (see "Publishing" below).
+   The live site updates within ~1–2 minutes.
+7. **Reply to the owner** with: the result, new Illinois record, the updated
+   leaderboard (from `check.js` output), and the star of the night. Keep it short and fun.
+
+### Postseason games
+Append to `postseason` (no picks, not scored for the contest, but grades and fun
+columns count toward averages):
+```json
+{ "id": "P1", "date": "2027-03-12", "round": "Big Ten Tournament QF", "opponent": "Purdont", "site": "neutral", "tv": "BTN", "result": { ... } }
+```
+
+### Season questions
+When something resolves (seed announced, MSU season ends, DC hired or Jan 1 passes,
+draft happens, transfers known), update `questions` in `data.json`:
+- `seed`, `exact`, `closest_record` types: set `"actual"` (e.g. `3`, `"Yes"`, `"24-8"`).
+  If Illinois misses the tournament set seed `actual` to `"none"`.
+- `judged` types (Best Win, Worst Loss, MVP, Transfers): the owner decides. Set
+  `"actual"` to their wording and `"awarded": {"Shime": 2, "Krazy": 0, "Ross": 0}`.
+  Transfers = 1 point per correctly named player (the "assistant coach" line counts if it happens).
+- The "closest Illinois record" bonus is automatic once all 32 games have results.
+- Note: "Michigan St. Record" really is Michigan State's record (one friend is an MSU fan).
+
+## Rules baked into scoring.js (confirmed with owner — don't change without asking)
+
+**Points:** 1 per correct game pick · closest Illinois record 3 · tourney seed 3 exact / 1 off-by-one ·
+Best Win / Worst Loss / MVP 2 each (owner judges) · closest Michigan St. record 3 ·
+suspensions exact 2 · draftees exact 2 · DC hire 2 · transfers 1 per correct name.
+Ties for "closest" all get the full points.
+
+**Grade scale** (GPA style, averages shown as nearest letter):
+F- −0.33, F 0, F+ 0.33, D- 0.67, D 1, D+ 1.33, C- 1.67, C 2, C+ 2.33, B- 2.67, B 3, B+ 3.33,
+A- 3.67, A 4, A+ 4.33, S- 4.67, S 5, S+ 5.33, **S++ 5.67 (cap — S+++, S++++++ all count as S++)**.
+Extra pluses on non-S grades (e.g. "B++") count as one plus. Emoji after a grade are
+ignored for math but displayed. DNP / blank / joke text don't count toward averages.
+
+## Practice / undo
+To try a made-up game, add it, run `check.js`, show the owner, then restore with
+`git checkout data.json` (if not committed) or `git revert <commit>` (if pushed).
