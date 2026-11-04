@@ -181,7 +181,7 @@
         </div></article>`;
     }).join("");
     const upcoming = data.games.filter((g) => !S.isPlayed(g));
-    const up = upcoming.map((g) => `<li><span>${siteIcon(g.site)} ${esc(g.opponent)}</span><span>${fmtDate(g.date)} · ${esc(g.tv)}</span></li>`).join("");
+    const up = upcoming.map((g) => `<li><span>${siteIcon(g.site)} ${esc(g.opponent)}</span><span>${fmtDate(g.date)} · ${g.time ? esc(g.time) : "time TBD"}${g.tv && g.tv !== "TBD" ? " · " + esc(g.tv) : ""}</span></li>`).join("");
     $("#tab-log").innerHTML = `
       <h2>Game Log <small>newest first</small></h2>
       ${cards ? `<div class="log-list">${cards}</div>` : `<div class="empty"><div class="big">🍺</div><p><b>No games logged yet.</b><br>Hydrate accordingly.</p></div>`}

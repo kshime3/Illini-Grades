@@ -122,6 +122,7 @@
     {
       "id": 1,
       "date": "2026-11-02",
+      "time": "7:00 PM CT",
       "opponent": "FDU",
       "site": "home",
       "tv": "BTN",
@@ -163,6 +164,7 @@
     {
       "id": 2,
       "date": "2026-11-05",
+      "time": "7:30 PM CT",
       "opponent": "Penn",
       "site": "home",
       "tv": "FS1",
@@ -177,6 +179,7 @@
     {
       "id": 3,
       "date": "2026-11-10",
+      "time": "7:00 PM CT",
       "opponent": "at Texas Tech",
       "site": "away",
       "tv": "Peacock",
@@ -191,6 +194,7 @@
     {
       "id": 4,
       "date": "2026-11-13",
+      "time": "6:00 PM CT",
       "opponent": "Sam Houston St",
       "site": "home",
       "tv": "B1G+",
@@ -205,6 +209,7 @@
     {
       "id": 5,
       "date": "2026-11-17",
+      "time": "6:00 PM CT",
       "opponent": "at Duke",
       "site": "away",
       "tv": "ESPN",
@@ -219,6 +224,7 @@
     {
       "id": 6,
       "date": "2026-11-20",
+      "time": "8:00 PM CT",
       "opponent": "EIU",
       "site": "home",
       "tv": "BTN",
@@ -233,6 +239,7 @@
     {
       "id": 7,
       "date": "2026-11-23",
+      "time": "7:00 PM CT",
       "opponent": "Winthrop",
       "site": "home",
       "tv": "BTN",
@@ -247,6 +254,7 @@
     {
       "id": 8,
       "date": "2026-11-27",
+      "time": "5:00 PM CT",
       "opponent": "WKU",
       "site": "home",
       "tv": "FS1",
@@ -261,6 +269,7 @@
     {
       "id": 9,
       "date": "2026-12-04",
+      "time": "6:00 PM CT",
       "opponent": "neutral UCONN",
       "site": "neutral",
       "tv": "FOX",
@@ -275,6 +284,7 @@
     {
       "id": 10,
       "date": "2026-12-08",
+      "time": "6:00 PM CT",
       "opponent": "at Minnesota",
       "site": "away",
       "tv": "Peacock",
@@ -289,6 +299,7 @@
     {
       "id": 11,
       "date": "2026-12-12",
+      "time": "1:00 PM CT",
       "opponent": "Penn St",
       "site": "home",
       "tv": "FS1",
@@ -303,6 +314,7 @@
     {
       "id": 12,
       "date": "2026-12-20",
+      "time": "6:30 PM CT",
       "opponent": "neutral Missouri",
       "site": "neutral",
       "tv": "ESPN2",
@@ -317,6 +329,7 @@
     {
       "id": 13,
       "date": "2026-12-29",
+      "time": "6:00 PM CT",
       "opponent": "Seattle",
       "site": "home",
       "tv": "B1G+",
@@ -331,6 +344,7 @@
     {
       "id": 14,
       "date": "2027-01-02",
+      "time": "7:00 PM CT",
       "opponent": "at Wisconsin",
       "site": "away",
       "tv": "FOX",
@@ -345,6 +359,7 @@
     {
       "id": 15,
       "date": "2027-01-05",
+      "time": "8:00 PM CT",
       "opponent": "Purdont",
       "site": "home",
       "tv": "Peacock",
@@ -359,6 +374,7 @@
     {
       "id": 16,
       "date": "2027-01-09",
+      "time": "3:00 PM CT",
       "opponent": "Ohio St.",
       "site": "home",
       "tv": "CBS",
@@ -373,6 +389,7 @@
     {
       "id": 17,
       "date": "2027-01-13",
+      "time": "8:00 PM CT",
       "opponent": "at Northwestern",
       "site": "away",
       "tv": "BTN",
@@ -387,6 +404,7 @@
     {
       "id": 18,
       "date": "2027-01-16",
+      "time": "1:00 PM CT",
       "opponent": "at Maryland",
       "site": "away",
       "tv": "Peacock",
@@ -401,6 +419,7 @@
     {
       "id": 19,
       "date": "2027-01-19",
+      "time": "8:00 PM CT",
       "opponent": "Nebraska",
       "site": "home",
       "tv": "Peacock",
@@ -415,6 +434,7 @@
     {
       "id": 20,
       "date": "2027-01-24",
+      "time": "11:00 AM CT",
       "opponent": "at Indiana",
       "site": "away",
       "tv": "CBS",
@@ -429,6 +449,7 @@
     {
       "id": 21,
       "date": "2027-01-27",
+      "time": "8:00 PM CT",
       "opponent": "USC",
       "site": "home",
       "tv": "BTN",
@@ -443,6 +464,7 @@
     {
       "id": 22,
       "date": "2027-01-30",
+      "time": null,
       "opponent": "neutral North Carolina",
       "site": "neutral",
       "tv": "TBD",
@@ -457,6 +479,7 @@
     {
       "id": 23,
       "date": "2027-02-02",
+      "time": "8:00 PM CT",
       "opponent": "UCLA",
       "site": "home",
       "tv": "Peacock",
@@ -471,6 +494,7 @@
     {
       "id": 24,
       "date": "2027-02-05",
+      "time": "7:00 PM CT",
       "opponent": "Michigan St.",
       "site": "home",
       "tv": "FOX",
@@ -485,6 +509,7 @@
     {
       "id": 25,
       "date": "2027-02-09",
+      "time": "6:00 PM CT",
       "opponent": "at Michigan",
       "site": "away",
       "tv": "Peacock",
@@ -499,6 +524,7 @@
     {
       "id": 26,
       "date": "2027-02-12",
+      "time": "7:00 PM CT",
       "opponent": "at Purdont",
       "site": "away",
       "tv": "FOX",
@@ -513,6 +539,7 @@
     {
       "id": 27,
       "date": "2027-02-16",
+      "time": "8:00 PM CT",
       "opponent": "Northwestern",
       "site": "home",
       "tv": "BTN",
@@ -527,6 +554,7 @@
     {
       "id": 28,
       "date": "2027-02-20",
+      "time": "4:00 PM CT",
       "opponent": "at Oregon",
       "site": "away",
       "tv": "FOX",
@@ -541,6 +569,7 @@
     {
       "id": 29,
       "date": "2027-02-23",
+      "time": "9:00 PM CT",
       "opponent": "at Washington",
       "site": "away",
       "tv": "FS1",
@@ -555,6 +584,7 @@
     {
       "id": 30,
       "date": "2027-02-28",
+      "time": "12:30 PM CT",
       "opponent": "Wisconsin",
       "site": "home",
       "tv": "CBS",
@@ -569,6 +599,7 @@
     {
       "id": 31,
       "date": "2027-03-03",
+      "time": "5:30 PM CT",
       "opponent": "at Buttgers",
       "site": "away",
       "tv": "BTN",
@@ -583,6 +614,7 @@
     {
       "id": 32,
       "date": "2027-03-06",
+      "time": "7:00 PM CT",
       "opponent": "Iowa",
       "site": "home",
       "tv": "FOX",

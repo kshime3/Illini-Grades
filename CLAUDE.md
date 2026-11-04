@@ -72,6 +72,10 @@ Example message:
 7. **Reply to the owner** with: the result, new Illinois record, the updated
    leaderboard (from `check.js` output), and the star of the night. Keep it short and fun.
 
+### Tip times
+Each game has a `time` in **Central time** (e.g. `"7:30 PM CT"`, or `null` if TBD),
+shown in the "Still to play" list. If the owner mentions a time change, update it.
+
 ### Postseason games
 Append to `postseason` (no picks, not scored for the contest, but grades and fun
 columns count toward averages):
