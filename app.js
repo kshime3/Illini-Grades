@@ -51,7 +51,7 @@
       <div class="sb-cell"><div class="sb-label">Leader</div><div class="sb-val">${esc(leaderTxt)}</div>
         <div class="sb-sub">${lb.gamesPlayed ? leaders[0].total + (leaders[0].total === 1 ? " pt" : " pts") : "tip-off soon"}</div></div>
       <div class="sb-cell"><div class="sb-label">Next</div><div class="sb-val">${next ? esc(next.opponent.replace(/^(at|neutral) /, "")) : "🏁"}</div>
-        <div class="sb-sub">${next ? siteIcon(next.site) + " " + fmtDate(next.date) : "season over"}</div></div>`;
+        <div class="sb-sub">${next ? siteIcon(next.site) + " " + fmtDate(next.date) + (next.time ? " · " + esc(next.time) : "") : "season over"}</div></div>`;
   }
 
   function renderStandings(data, lb, av) {

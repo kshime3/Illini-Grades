@@ -82,7 +82,7 @@ h1 span { color: var(--orange); text-shadow: 3px 3px 0 #000; }
   font-family: "Bebas Neue", monospace; font-size: clamp(24px, 7vw, 36px); color: var(--orange);
   text-shadow: 0 0 8px rgba(255,95,5,.8); line-height: 1.05; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
 }
-.sb-sub { font-size: 11px; color: #ccd; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.sb-sub { font-size: 11px; color: #ccd; line-height: 1.3; }
 
 /* ---------- Tabs ---------- */
 .tabs {
