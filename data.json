@@ -2549,5 +2549,16 @@
         "finishShort": "Second Round"
       }
     }
-  ]
+  ],
+  "memes": {
+    "watermelon": {
+      "title": "Exhibit A: The Watermelon",
+      "event": "Big Ten Tournament, Indianapolis · March 2025",
+      "photos": [
+        "img/melon-ramen-1.jpg",
+        "img/melon-ramen-2.jpg"
+      ],
+      "caption": "Walking to the stadium, we passed a watermelon next to a pack of ramen. When we got back, the ramen was inside the watermelon. A few days later, the watermelon was half eaten. Nobody has explained this."
+    }
+  }
 }

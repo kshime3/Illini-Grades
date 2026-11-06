@@ -88,7 +88,8 @@
         <div class="stat"><b>${topPlayer ? esc(topPlayer.player.display) + " " + topPlayer.letter : "—"}</b><span>Top season average</span></div>
         <div class="stat"><b>${disputed}</b><span>Games the group disagreed on</span></div>
         <div class="stat"><b>${contrarian && contrarian.n ? esc(contrarian.f) : "—"}</b><span>Biggest contrarian${contrarian && contrarian.n ? ` (${contrarian.n} solo picks)` : ""}</span></div>
-      </div>`;
+      </div>
+      ${melonCard(data)}`;
   }
 
   function renderPicks(data) {
@@ -292,13 +293,66 @@
       <p class="hint">✓ = right. Best win, worst loss and MVP get marked once they're decided.</p>`;
   }
 
+  // ---------- watermelon corner (meme) ----------
+  function melonSvg(frac) {
+    const f = Math.max(0, Math.min(1, frac));
+    const r = f > 0 ? 10 + 34 * f : 0;
+    return `<svg class="melon" viewBox="0 0 140 100" role="img" aria-label="Watermelon ${Math.round(f * 100)}% eaten">
+      <defs><mask id="bite-meter"><rect width="140" height="100" fill="#fff"/><circle cx="122" cy="24" r="${r}" fill="#000"/></mask></defs>
+      <g mask="url(#bite-meter)">
+        <ellipse cx="70" cy="62" rx="62" ry="34" fill="#2e7d32"/>
+        <ellipse cx="70" cy="62" rx="54" ry="27" fill="#e8f5e9"/>
+        <ellipse cx="70" cy="62" rx="50" ry="23" fill="#ff3b5c"/>
+        <g fill="#1b1b1b"><circle cx="50" cy="60" r="2"/><circle cx="70" cy="54" r="2"/><circle cx="90" cy="60" r="2"/><circle cx="62" cy="70" r="2"/><circle cx="82" cy="70" r="2"/></g>
+      </g></svg>`;
+  }
+
+  function melonCard(data) {
+    const F = data.friends;
+    const played = data.games.filter(S.isPlayed);
+    const n = played.length;
+    const wins = S.record(data.games).w;
+    const frac = data.games.length ? wins / data.games.length : 0;
+    let award;
+    if (!n) {
+      award = "Nobody's rotten yet. The first wrong pick gets the award.";
+    } else {
+      const c = F.map((f) => ({ f, c: played.filter((g) => g.picks[f] === S.outcome(g)).length }));
+      const min = Math.min(...c.map((x) => x.c));
+      const low = c.filter((x) => x.c === min).map((x) => x.f);
+      award = low.length === F.length
+        ? `Everyone is equally rotten (${min}/${n} right).`
+        : `${low.map(esc).join(" &amp; ")} · ${min}/${n} picks right`;
+    }
+    return `<div class="card melon-card">
+      <h3>🍉 The Watermelon Corner</h3>
+      <div class="melon-row">
+        ${melonSvg(frac)}
+        <div>
+          <div class="melon-pct">${Math.round(frac * 100)}% eaten</div>
+          <p class="hint">The melon gets bitten a little more with every Illinois win (${wins}/${data.games.length} so far).</p>
+        </div>
+      </div>
+      <div class="award"><b>Watermelon Award</b> <span class="award-sub">for the most wrong picks</span><div class="award-name">${award}</div></div>
+    </div>`;
+  }
+
+  function exhibitHtml(data) {
+    const m = (data.memes || {}).watermelon;
+    if (!m) return "";
+    return `<div class="card exhibit"><h3>🍉 ${esc(m.title)}</h3>
+      <p class="hint">${esc(m.event)}</p>
+      <div class="photos">${m.photos.map((src, i) => `<a href="${esc(src)}" target="_blank" rel="noopener"><img src="${esc(src)}" alt="Exhibit photo ${i + 1}" loading="lazy"></a>`).join("")}</div>
+      <p class="caption">${esc(m.caption)}</p></div>`;
+  }
+
   function historyHtml(data) {
     const H = data.history || [];
     if (!H.length) return "";
     const chips = (obj) => Object.entries(obj).map(([n, g]) => `<span class="mg">${esc(n)} ${letterChip(g)}</span>`).join("");
     const preds = (p) => Object.entries(p).map(([q, a]) => `<h3 class="ph">${esc(q)}</h3><div class="q-answers">${
       Object.entries(a).map(([who, txt]) => `<div class="q-ans"><span class="who">${esc(who)}</span><span class="txt">${esc(txt)}</span></div>`).join("")}</div>`).join("");
-    return `<h2 class="past">Past Seasons <small>from your old grade sheet</small></h2>` + H.map((s) => `
+    return `<h2 class="past">Past Seasons <small>from your old grade sheet</small></h2>` + exhibitHtml(data) + H.map((s) => `
       <div class="card">
         <h3>${esc(s.season)} <span class="badge">${esc(s.note || "")}</span></h3>
         <p class="hint">Season averages</p>

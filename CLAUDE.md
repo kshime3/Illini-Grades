@@ -142,3 +142,8 @@ all three links in `index.html`**, otherwise phones keep the old code for ~10 mi
 ## Practice / undo
 To try a made-up game, add it, run `check.js`, show the owner, then restore with
 `git checkout data.json` (if not committed) or `git revert <commit>` (if pushed).
+
+## Watermelon Corner (meme)
+`memes.watermelon` in data.json holds the "Exhibit A" caption and photos (`img/`).
+Standings shows a Watermelon Corner card: the melon gets bitten a bit more with each Illinois win
+(wins / games in data.json), and the Watermelon Award goes to whoever has the fewest correct picks so far.
