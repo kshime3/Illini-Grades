@@ -1676,7 +1676,7 @@
           },
           "coaches": "S+++",
           "crowd": "B+",
-          "opposingCoach": "Fuck off 🖕"
+          "opposingCoach": "Fuck off"
         },
         {
           "opponent": "Iowa (NCAA E8)",
@@ -1699,7 +1699,7 @@
           },
           "coaches": "A",
           "crowd": "A",
-          "opposingCoach": null
+          "opposingCoach": "🖕"
         }
       ]
     },
@@ -1763,7 +1763,767 @@
           "Krazy": "Boswell",
           "Ross": "Tre White"
         }
-      }
+      },
+      "players": [
+        "KJ",
+        "Boswell",
+        "Tre",
+        "Hummer",
+        "Ivisic",
+        "DGL",
+        "Riley",
+        "Davis",
+        "Morez",
+        "Booth",
+        "Redd",
+        "Kutcher"
+      ],
+      "games": [
+        {
+          "opponent": "EIU",
+          "phase": "reg",
+          "grades": {
+            "KJ": "B+",
+            "Boswell": "C+",
+            "Tre": "C-",
+            "Hummer": "B-",
+            "Ivisic": "B+",
+            "DGL": "A+",
+            "Riley": "S",
+            "Davis": "D",
+            "Morez": "B+",
+            "Booth": "F+",
+            "Redd": "C",
+            "Kutcher": "C"
+          },
+          "coaches": "A",
+          "crowd": "C",
+          "crowdFemale": "F"
+        },
+        {
+          "opponent": "SIUE",
+          "phase": "reg",
+          "grades": {
+            "KJ": "S+",
+            "Boswell": "C-",
+            "Tre": "B+",
+            "Hummer": "B",
+            "Ivisic": "A",
+            "DGL": "D+",
+            "Riley": "B+",
+            "Davis": "B-",
+            "Morez": "B-",
+            "Booth": "D-",
+            "Redd": "C-",
+            "Kutcher": "C-"
+          },
+          "coaches": "A",
+          "crowd": "D",
+          "crowdFemale": "D+"
+        },
+        {
+          "opponent": "Oakland",
+          "phase": "reg",
+          "grades": {
+            "KJ": "B+",
+            "Boswell": "B+",
+            "Tre": "C+",
+            "Hummer": "B",
+            "Ivisic": "B+",
+            "DGL": "B",
+            "Riley": "B+",
+            "Davis": "DNP",
+            "Morez": "B-",
+            "Booth": "F",
+            "Redd": "DNP",
+            "Kutcher": "DNP"
+          },
+          "coaches": "C-",
+          "crowd": "D-",
+          "crowdFemale": "B+"
+        },
+        {
+          "opponent": "Alabama",
+          "phase": "reg",
+          "grades": {
+            "KJ": "A-",
+            "Boswell": "B",
+            "Tre": "C+",
+            "Hummer": "B",
+            "Ivisic": "B-",
+            "DGL": "C+",
+            "Riley": "A",
+            "Davis": "DNP",
+            "Morez": "A-",
+            "Booth": "F-",
+            "Redd": "DNP",
+            "Kutcher": "DNP"
+          },
+          "coaches": "D",
+          "crowd": "D",
+          "crowdFemale": "F+"
+        },
+        {
+          "opponent": "MDES",
+          "phase": "reg",
+          "grades": {
+            "KJ": "B+",
+            "Boswell": "A-",
+            "Tre": "A-",
+            "Hummer": "B-",
+            "Ivisic": "B+",
+            "DGL": "C+",
+            "Riley": "A",
+            "Davis": "C+",
+            "Morez": "A+",
+            "Booth": "C-",
+            "Redd": "C+",
+            "Kutcher": "C"
+          },
+          "coaches": "A",
+          "crowd": "D-",
+          "crowdFemale": "D-"
+        },
+        {
+          "opponent": "Little Cock",
+          "phase": "reg",
+          "grades": {
+            "KJ": "A+",
+            "Boswell": "B+",
+            "Tre": "S",
+            "Hummer": "C+",
+            "Ivisic": "A+",
+            "DGL": "B-",
+            "Riley": "A",
+            "Davis": "C-",
+            "Morez": "A+",
+            "Booth": "C",
+            "Redd": "B-",
+            "Kutcher": "C"
+          },
+          "coaches": "A+",
+          "crowd": "D-",
+          "crowdFemale": "C+"
+        },
+        {
+          "opponent": "Arkansas",
+          "phase": "reg",
+          "grades": {
+            "KJ": "S",
+            "Boswell": "A+",
+            "Tre": "D",
+            "Hummer": "B",
+            "Ivisic": "S",
+            "DGL": "B",
+            "Riley": "C",
+            "Davis": "A-",
+            "Morez": "A",
+            "Booth": "D",
+            "Redd": "DNO",
+            "Kutcher": "DNP"
+          },
+          "coaches": "A+",
+          "crowd": "F",
+          "crowdFemale": "D"
+        },
+        {
+          "opponent": "Northwestern",
+          "phase": "reg",
+          "grades": {
+            "KJ": "S",
+            "Boswell": "C+",
+            "Tre": "D",
+            "Hummer": "D",
+            "Ivisic": "S",
+            "DGL": "D+",
+            "Riley": "C-",
+            "Davis": "D",
+            "Morez": "A",
+            "Booth": "DNP",
+            "Redd": "DNP",
+            "Kutcher": "DNP"
+          },
+          "coaches": "C-",
+          "crowd": "C+",
+          "crowdFemale": "F"
+        },
+        {
+          "opponent": "Wisconsin",
+          "phase": "reg",
+          "grades": {
+            "KJ": "S",
+            "Boswell": "A+",
+            "Tre": "S+",
+            "Hummer": "C",
+            "Ivisic": "B+",
+            "DGL": "B-",
+            "Riley": "C",
+            "Davis": "D+",
+            "Morez": "B",
+            "Booth": "DNP",
+            "Redd": "DNP",
+            "Kutcher": "DNP"
+          },
+          "coaches": "A-",
+          "crowd": "B+",
+          "crowdFemale": "C-"
+        },
+        {
+          "opponent": "Tennessee",
+          "phase": "reg",
+          "grades": {
+            "KJ": "C+",
+            "Boswell": "B-",
+            "Tre": "B+",
+            "Hummer": "D",
+            "Ivisic": "C+",
+            "DGL": "B",
+            "Riley": "B",
+            "Davis": "D",
+            "Morez": "B",
+            "Booth": "A+",
+            "Redd": "DNP",
+            "Kutcher": "DNP"
+          },
+          "coaches": "D+",
+          "crowd": "A",
+          "crowdFemale": "A-",
+          "refs": "S+"
+        },
+        {
+          "opponent": "Missouri",
+          "phase": "reg",
+          "grades": {
+            "KJ": "A-",
+            "Boswell": "A",
+            "Tre": "A",
+            "Hummer": "D+",
+            "Ivisic": "C",
+            "DGL": "B",
+            "Riley": "D+",
+            "Davis": "D+",
+            "Morez": "B+",
+            "Booth": "D+",
+            "Redd": "DNP",
+            "Kutcher": "DNP"
+          },
+          "coaches": "C+",
+          "crowd": "S",
+          "crowdFemale": "B-",
+          "refs": "F"
+        },
+        {
+          "opponent": "Chicago St",
+          "phase": "reg",
+          "grades": {
+            "KJ": "A",
+            "Boswell": "S",
+            "Tre": "B+",
+            "Hummer": "D+",
+            "Ivisic": "A+",
+            "DGL": "A",
+            "Riley": "B+",
+            "Davis": "B",
+            "Morez": "A",
+            "Booth": "F+",
+            "Redd": "C+",
+            "Kutcher": "A"
+          },
+          "coaches": "A",
+          "crowd": "C",
+          "crowdFemale": "C",
+          "refs": "A"
+        },
+        {
+          "opponent": "at Oregon",
+          "phase": "reg",
+          "grades": {
+            "KJ": "A+",
+            "Boswell": "S",
+            "Tre": "A+",
+            "Hummer": "A",
+            "Ivisic": "B",
+            "DGL": "A+",
+            "Riley": "B-",
+            "Davis": "S",
+            "Morez": "B",
+            "Booth": "F",
+            "Redd": "C",
+            "Kutcher": "C"
+          },
+          "coaches": "S",
+          "crowd": "C",
+          "crowdFemale": "B+",
+          "refs": "B+"
+        },
+        {
+          "opponent": "at Washington",
+          "phase": "reg",
+          "grades": {
+            "KJ": "A",
+            "Boswell": "A-",
+            "Tre": "A+",
+            "Hummer": "B",
+            "Ivisic": "B+",
+            "DGL": "A-",
+            "Riley": "B",
+            "Davis": "C",
+            "Morez": "B+",
+            "Booth": "DNP",
+            "Redd": "DNP",
+            "Kutcher": "DNP"
+          },
+          "coaches": "B",
+          "crowd": "B",
+          "crowdFemale": "B+"
+        },
+        {
+          "opponent": "Penn State",
+          "phase": "reg",
+          "grades": {
+            "KJ": "DNP",
+            "Boswell": "B+",
+            "Tre": "S",
+            "Hummer": "S",
+            "Ivisic": "C+",
+            "DGL": "B+",
+            "Riley": "C+",
+            "Davis": "C",
+            "Morez": "S+",
+            "Booth": "D+",
+            "Redd": "C",
+            "Kutcher": "C"
+          },
+          "coaches": "A+",
+          "crowd": "C-",
+          "crowdFemale": "sat next to some Cs"
+        },
+        {
+          "opponent": "USC",
+          "phase": "reg",
+          "grades": {
+            "KJ": "DNP",
+            "Boswell": "B-",
+            "Tre": "B-",
+            "Hummer": "C+",
+            "Ivisic": "F",
+            "DGL": "C+",
+            "Riley": "C+",
+            "Davis": "C-",
+            "Morez": "D+",
+            "Booth": "F",
+            "Redd": "DNP",
+            "Kutcher": "DNP"
+          },
+          "coaches": "F+",
+          "crowd": "D",
+          "crowdFemale": "F"
+        },
+        {
+          "opponent": "at Indiana",
+          "phase": "reg",
+          "grades": {
+            "KJ": "S",
+            "Boswell": "A+",
+            "Tre": "B-",
+            "Hummer": "B+",
+            "Ivisic": "A+",
+            "DGL": "B",
+            "Riley": "C+",
+            "Davis": "C-",
+            "Morez": "B+",
+            "Booth": "D",
+            "Redd": "C",
+            "Kutcher": "DNP"
+          },
+          "coaches": "S+",
+          "crowd": "A",
+          "crowdFemale": "B"
+        },
+        {
+          "opponent": "at Mich St",
+          "phase": "reg",
+          "grades": {
+            "KJ": "D",
+            "Boswell": "B+",
+            "Tre": "D",
+            "Hummer": "C",
+            "Ivisic": "B+",
+            "DGL": "B+",
+            "Riley": "A+",
+            "Davis": "C+",
+            "Morez": "A",
+            "Booth": "DNP",
+            "Redd": "DNP",
+            "Kutcher": "DNP"
+          },
+          "coaches": "B+",
+          "crowd": "A+",
+          "crowdFemale": "B",
+          "refs": "F"
+        },
+        {
+          "opponent": "Maryland",
+          "phase": "reg",
+          "grades": {
+            "KJ": "C+",
+            "Boswell": "D",
+            "Tre": "B+",
+            "Hummer": "F+",
+            "Ivisic": "DNP",
+            "DGL": "B+",
+            "Riley": "D",
+            "Davis": "F",
+            "Morez": "D",
+            "Booth": "C-",
+            "Redd": "C",
+            "Kutcher": "C+"
+          },
+          "coaches": "F",
+          "crowd": "F",
+          "crowdFemale": "F",
+          "refs": "D"
+        },
+        {
+          "opponent": "Not Chicago's Team",
+          "phase": "reg",
+          "grades": {
+            "KJ": "A",
+            "Boswell": "B+",
+            "Tre": "B-",
+            "Hummer": "A-",
+            "Ivisic": "DNP",
+            "DGL": "C",
+            "Riley": "B-",
+            "Davis": "A",
+            "Morez": "A+",
+            "Booth": "DNP",
+            "Redd": "DNP",
+            "Kutcher": "DNP"
+          },
+          "coaches": "A",
+          "crowd": "B+",
+          "crowdFemale": "C",
+          "refs": "A"
+        },
+        {
+          "opponent": "at Nebraska",
+          "phase": "reg",
+          "grades": {
+            "KJ": "A-",
+            "Boswell": "D-",
+            "Tre": "A-",
+            "Hummer": "F",
+            "Ivisic": "DNP",
+            "DGL": "A-",
+            "Riley": "A-",
+            "Davis": "D+",
+            "Morez": "C-",
+            "Booth": "F",
+            "Redd": "DNP",
+            "Kutcher": "DNP"
+          },
+          "coaches": "D",
+          "crowd": "D-",
+          "crowdFemale": "F",
+          "refs": "C-"
+        },
+        {
+          "opponent": "Ohio St",
+          "phase": "reg",
+          "grades": {
+            "KJ": "B-",
+            "Boswell": "C+",
+            "Tre": "F",
+            "Hummer": "D",
+            "Ivisic": "B",
+            "DGL": "A",
+            "Riley": "S",
+            "Davis": "D-",
+            "Morez": "A+",
+            "Booth": "DNP",
+            "Redd": "DNP",
+            "Kutcher": "DNP"
+          },
+          "coaches": "B+",
+          "crowd": "S",
+          "crowdFemale": "A",
+          "refs": "B+"
+        },
+        {
+          "opponent": "at Buttgers",
+          "phase": "reg",
+          "grades": {
+            "KJ": "F",
+            "Boswell": "D+",
+            "Tre": "DNP",
+            "Hummer": "C-",
+            "Ivisic": "C+",
+            "DGL": "D",
+            "Riley": "A",
+            "Davis": "D",
+            "Morez": "B",
+            "Booth": "F",
+            "Redd": "DNP",
+            "Kutcher": "DNP"
+          },
+          "coaches": "D+",
+          "crowd": "A",
+          "crowdFemale": "B"
+        },
+        {
+          "opponent": "at Minnesota",
+          "phase": "reg",
+          "grades": {
+            "KJ": "A-",
+            "Boswell": "C-",
+            "Tre": "D",
+            "Hummer": "B",
+            "Ivisic": "A+",
+            "DGL": "D",
+            "Riley": "S+",
+            "Davis": "B+",
+            "Morez": "B-",
+            "Booth": "C",
+            "Redd": "C",
+            "Kutcher": "C"
+          },
+          "coaches": "A-",
+          "crowd": "B",
+          "crowdFemale": "B"
+        },
+        {
+          "opponent": "UCLA",
+          "phase": "reg",
+          "grades": {
+            "KJ": "A",
+            "Boswell": "B+",
+            "Tre": "DNP",
+            "Hummer": "B+",
+            "Ivisic": "A+",
+            "DGL": "D",
+            "Riley": "A-",
+            "Davis": "B+",
+            "Morez": "B",
+            "Booth": "DNP",
+            "Redd": "DNP",
+            "Kutcher": "DNP"
+          },
+          "coaches": "A",
+          "crowd": "A+",
+          "crowdFemale": "A"
+        },
+        {
+          "opponent": "Mich St",
+          "phase": "reg",
+          "grades": {
+            "KJ": "C+",
+            "Boswell": "F",
+            "Tre": "DNP",
+            "Hummer": "C",
+            "Ivisic": "D",
+            "DGL": "C",
+            "Riley": "A",
+            "Davis": "B",
+            "Morez": "S",
+            "Booth": "DNP",
+            "Redd": "DNP",
+            "Kutcher": "DNP"
+          },
+          "coaches": "B-",
+          "crowd": "A",
+          "crowdFemale": "A"
+        },
+        {
+          "opponent": "at Whiskey",
+          "phase": "reg",
+          "grades": {
+            "KJ": "F-",
+            "Boswell": "F",
+            "Tre": "D",
+            "Hummer": "C-",
+            "Ivisic": "D",
+            "DGL": "A",
+            "Riley": "B",
+            "Davis": "C-",
+            "Morez": "DNP",
+            "Booth": "F",
+            "Redd": "A+",
+            "Kutcher": "B++"
+          },
+          "coaches": "D",
+          "crowd": "B",
+          "crowdFemale": "A"
+        },
+        {
+          "opponent": "Duke",
+          "phase": "reg",
+          "grades": {
+            "KJ": "F",
+            "Boswell": "C",
+            "Tre": "C",
+            "Hummer": "F",
+            "Ivisic": "D",
+            "DGL": "D",
+            "Riley": "A",
+            "Davis": "D",
+            "Morez": "DNP",
+            "Booth": "F",
+            "Redd": "DNP",
+            "Kutcher": "DNP"
+          },
+          "coaches": "F",
+          "crowd": "D",
+          "crowdFemale": "S"
+        },
+        {
+          "opponent": "Iowa",
+          "phase": "reg",
+          "grades": {
+            "KJ": "B",
+            "Boswell": "B+",
+            "Tre": "B+",
+            "Hummer": "C-",
+            "Ivisic": "A+",
+            "DGL": "D",
+            "Riley": "A-",
+            "Davis": "D",
+            "Morez": "DNP",
+            "Booth": "F",
+            "Redd": "DNP",
+            "Kutcher": "DNP"
+          },
+          "coaches": "B+",
+          "crowd": "C",
+          "crowdFemale": "C"
+        },
+        {
+          "opponent": "at Michigan",
+          "phase": "reg",
+          "grades": {
+            "KJ": "B",
+            "Boswell": "S",
+            "Tre": "A+",
+            "Hummer": "B",
+            "Ivisic": "B+",
+            "DGL": "D-",
+            "Riley": "A-",
+            "Davis": "B",
+            "Morez": "DNP",
+            "Booth": "F",
+            "Redd": "DNP",
+            "Kutcher": "DNP"
+          },
+          "coaches": "A+",
+          "crowd": "A",
+          "crowdFemale": "B"
+        },
+        {
+          "opponent": "Purdue",
+          "phase": "reg",
+          "grades": {
+            "KJ": "B+",
+            "Boswell": "C",
+            "Tre": "A+",
+            "Hummer": "C-",
+            "Ivisic": "B-",
+            "DGL": "F",
+            "Riley": "A-",
+            "Davis": "C-",
+            "Morez": "DNP",
+            "Booth": "F",
+            "Redd": "DNP",
+            "Kutcher": "DNP"
+          },
+          "coaches": "A",
+          "crowd": "S",
+          "crowdFemale": "A"
+        },
+        {
+          "opponent": "Iowa BTT",
+          "phase": "post",
+          "grades": {
+            "KJ": "C+",
+            "Boswell": "B+",
+            "Tre": "A",
+            "Hummer": "D",
+            "Ivisic": "S",
+            "DGL": "F",
+            "Riley": "S+",
+            "Davis": "C",
+            "Morez": "B",
+            "Booth": "F",
+            "Redd": "DNP",
+            "Kutcher": "DNP"
+          },
+          "coaches": "S",
+          "crowd": "C-",
+          "crowdFemale": "DD"
+        },
+        {
+          "opponent": "Maryland BTT",
+          "phase": "post",
+          "grades": {
+            "KJ": "C+",
+            "Boswell": "D+",
+            "Tre": "C-",
+            "Hummer": "D-",
+            "Ivisic": "D-",
+            "DGL": "F",
+            "Riley": "B",
+            "Davis": "D-",
+            "Morez": "C",
+            "Booth": "F",
+            "Redd": "D",
+            "Kutcher": "D"
+          },
+          "coaches": "F",
+          "crowd": "C-",
+          "crowdFemale": "DD"
+        },
+        {
+          "opponent": "NCAAT Xavier",
+          "phase": "post",
+          "grades": {
+            "KJ": "S",
+            "Boswell": "A+",
+            "Tre": "A",
+            "Hummer": "F-",
+            "Ivisic": "S",
+            "DGL": "D-",
+            "Riley": "S",
+            "Davis": "DNP",
+            "Morez": "B+",
+            "Booth": "DNP",
+            "Redd": "DNP",
+            "Kutcher": "DNP"
+          },
+          "coaches": "A",
+          "crowd": "A",
+          "crowdFemale": "A"
+        },
+        {
+          "opponent": "NCAAT Kentucky",
+          "phase": "post",
+          "grades": {
+            "KJ": "D-",
+            "Boswell": "S",
+            "Tre": "A-",
+            "Hummer": "D",
+            "Ivisic": "A-",
+            "DGL": "D",
+            "Riley": "D+",
+            "Davis": "C",
+            "Morez": "C",
+            "Booth": "A+",
+            "Redd": "DNP",
+            "Kutcher": "DNP"
+          },
+          "coaches": "D",
+          "crowd": "C",
+          "crowdFemale": "A+"
+        }
+      ]
     }
   ]
 }

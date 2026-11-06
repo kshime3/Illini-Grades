@@ -107,7 +107,8 @@ tagged "Rivalry"). To add a late entry, parse their form row by tabs: the form h
 (as typed in the sheet, not mapped to the current roster) and the friends' old
 predictions. Shown under "Past Seasons" on the Grades tab. These are NOT results,
 and they don't affect scoring. 2025-26 has game-by-game grades (`games`, with `phase` reg/post and `players` order), matched by
-column position. Beverages and the projection row were skipped as unreliable. 2024-25 game-by-game is still to be imported.
+column position. Beverages and the projection row were skipped as unreliable. 2024-25 game-by-game is imported too (35 games, with refs and the female crowd row).
+Source: the Google Sheet "Basketball Grades" (id 13QFKm55fb6yZxfRchEGsK5ktJBTcJPmxkIeR7jRC5I4), tabs "2025-26 True Grades" and "2024-25 Grades".
 
 ## Rules baked into scoring.js (confirmed with owner — don't change without asking)
 
