@@ -174,7 +174,34 @@
         "Ross": "W",
         "Don": "W"
       },
-      "result": null
+      "result": {
+        "illinois": 112,
+        "opponent": 70,
+        "grades": {
+          "Andrej Stojakovic": "S+",
+          "David Mirkovic": "DNP",
+          "Lucas Morillo": "B-",
+          "Stefan Vaaks": "A",
+          "Zvonimir Ivisic": "B-",
+          "Tomislav Ivisic": "C-",
+          "Jake Davis": "DNP",
+          "Zavier Zens": "A",
+          "Quentin Coleman": "S-",
+          "Blake Fagbemi": "C-",
+          "Lincoln Williams": "B+",
+          "Quentin McCoy": "C",
+          "Landon Davis": "D+",
+          "Jason Jakstys": "B-",
+          "Ethan Brown": "B+"
+        },
+        "coaches": "A",
+        "crowd": "B",
+        "opposingCoach": "D",
+        "refs": "A",
+        "beverages": "1",
+        "projection": "unchanged from last game",
+        "notes": ""
+      }
     },
     {
       "id": 3,
