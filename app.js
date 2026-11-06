@@ -303,6 +303,15 @@
         <ellipse cx="70" cy="62" rx="62" ry="34" fill="#2e7d32"/>
         <ellipse cx="70" cy="62" rx="54" ry="27" fill="#e8f5e9"/>
         <ellipse cx="70" cy="62" rx="50" ry="23" fill="#ff3b5c"/>
+        <g fill="none" stroke="#f7d774" stroke-width="2.2" stroke-linecap="round">
+          <path d="M34 56 q4 -5 8 0 t8 0 t8 0 t8 0 t8 0 t8 0 t8 0 t8 0"/>
+          <path d="M36 63 q4 5 8 0 t8 0 t8 0 t8 0 t8 0 t8 0 t8 0 t8 0"/>
+          <path d="M40 70 q4 -5 8 0 t8 0 t8 0 t8 0 t8 0 t8 0 t8 0"/>
+          <path d="M44 50 q4 4 8 0 t8 0 t8 0 t8 0 t8 0 t8 0"/>
+        </g>
+        <path d="M92 48 l9 -4" stroke="#43a047" stroke-width="3" stroke-linecap="round"/>
+        <circle cx="46" cy="44" r="0" fill="none"/>
+        <ellipse cx="104" cy="66" rx="5" ry="3.5" fill="#fff3c4" stroke="#f7d774" stroke-width="1"/><circle cx="104" cy="66" r="1.8" fill="#ff9800"/>
         <g fill="#1b1b1b"><circle cx="50" cy="60" r="2"/><circle cx="70" cy="54" r="2"/><circle cx="90" cy="60" r="2"/><circle cx="62" cy="70" r="2"/><circle cx="82" cy="70" r="2"/></g>
       </g></svg>`;
   }
