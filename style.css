@@ -303,3 +303,8 @@ tr.rival td:first-child { box-shadow: inset 4px 0 0 var(--msu); }
 
 .ph { margin: 12px 0 6px; font-size: 14px; }
 h2.past { margin-top: 24px; }
+
+.cmp { font-weight: 600; }
+.cmp.hit { color: var(--win); font-weight: 800; }
+.cmp.miss { color: var(--loss); }
+.cmp-table td, .cmp-table th { white-space: normal; }

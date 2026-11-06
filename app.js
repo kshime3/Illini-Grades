@@ -251,6 +251,47 @@
       <thead><tr><th>Player</th>${head}</tr></thead><tbody>${pRows}${sRows}</tbody></table></div>`;
   }
 
+  function compareHtml(s, data) {
+    const a = s.actual;
+    if (!a) return "";
+    const P = s.predictions || {};
+    const F = data.friends.filter((f) => Object.values(P).some((r) => r && r[f] != null));
+    const roundCode = (t) => {
+      const x = String(t || "").toLowerCase().replace(/\s+/g, "");
+      if (/final|f4/.test(x)) return "F4";
+      if (/^s16|sweet/.test(x)) return "S16";
+      if (/^e8|elite/.test(x)) return "E8";
+      if (/^r32|second/.test(x)) return "R32";
+      return x;
+    };
+    const cell = (v, ok) => {
+      const cls = ok === true ? "hit" : ok === false ? "miss" : "";
+      return `<span class="cmp ${cls}">${esc(v == null ? "—" : v)}${ok === true ? " ✓" : ""}</span>`;
+    };
+    const row = (label, actual, key, test) => {
+      const pred = P[key] || {};
+      const cells = F.map((f) => {
+        const v = pred[f];
+        return `<td>${cell(v, v == null || actual == null || actual === "" ? null : test(v))}</td>`;
+      }).join("");
+      return `<tr><td><b>${label}</b></td><td><b>${esc(actual || "—")}</b></td>${cells}</tr>`;
+    };
+    const rows = [
+      row("Record", a.record, "Record", (v) => v === a.record),
+      row("Big Ten", a.conf, "Conference record", (v) => v === a.conf),
+      row("Seed", a.seed, "Tourney seed", (v) => parseInt(v, 10) === parseInt(a.seed, 10)),
+      row("NCAA finish", a.finishShort || a.finish, "Tourney finish", (v) => roundCode(v) === a.finishCode),
+      row("Best win", a.bestWin, "Best win", (v) => String(v).toLowerCase() === String(a.bestWin).toLowerCase()),
+      row("Worst loss", a.worstLoss, "Worst loss", (v) => String(v).toLowerCase() === String(a.worstLoss).toLowerCase()),
+      row("MVP", a.mvp, "MVP", (v) => String(v).toLowerCase() === String(a.mvp).toLowerCase()),
+    ].join("");
+    return `<h3 class="ph">Predictions vs. actual</h3>
+      <div class="table-wrap"><table class="cmp-table">
+        <thead><tr><th>Stat</th><th>Actual</th>${F.map((f) => `<th>${esc(f)}</th>`).join("")}</tr></thead>
+        <tbody>${rows}</tbody></table></div>
+      <p class="hint">✓ = right. Best win, worst loss and MVP get marked once they're decided.</p>`;
+  }
+
   function historyHtml(data) {
     const H = data.history || [];
     if (!H.length) return "";
@@ -265,7 +306,9 @@
         <p class="hint">Staff</p>
         <div class="mini-grades">${chips(s.averages.staff)}</div>
         ${s.games ? `<details><summary>Game-by-game grades (${s.games.length} games, swipe →)</summary>${gameTable(s)}</details>` : ""}
-        <details><summary>Friends' old predictions (not real results)</summary>${preds(s.predictions)}</details>
+        ${s.actual ? `<p class="hint"><b>Actual:</b> ${esc(s.actual.record)} overall · ${esc(s.actual.conf)} Big Ten · ${esc(s.actual.seed)} seed · ${esc(s.actual.finish)}</p>` : ""}
+        ${compareHtml(s, data)}
+        <details><summary>Friends' old predictions (full list)</summary>${preds(s.predictions)}</details>
       </div>`).join("");
   }
 

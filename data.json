@@ -1701,7 +1701,19 @@
           "crowd": "A",
           "opposingCoach": "🖕"
         }
-      ]
+      ],
+      "actual": {
+        "record": "28-9",
+        "conf": "15-5",
+        "seed": "3",
+        "finishCode": "F4",
+        "finish": "Final Four (lost to UConn 62-71)",
+        "bestWin": null,
+        "worstLoss": null,
+        "mvp": null,
+        "source": "Wikipedia season pages (2025–26 and 2024–25 Illinois men's basketball); exhibitions excluded",
+        "finishShort": "Final Four"
+      }
     },
     {
       "season": "2024-25",
@@ -2523,7 +2535,19 @@
           "crowd": "C",
           "crowdFemale": "A+"
         }
-      ]
+      ],
+      "actual": {
+        "record": "22-13",
+        "conf": "12-8",
+        "seed": "6",
+        "finishCode": "R32",
+        "finish": "Second Round (lost to Kentucky 75-84)",
+        "bestWin": null,
+        "worstLoss": null,
+        "mvp": null,
+        "source": "Wikipedia season pages (2025–26 and 2024–25 Illinois men's basketball); exhibitions excluded",
+        "finishShort": "Second Round"
+      }
     }
   ]
 }
