@@ -240,6 +240,16 @@
   }
 
   // ---------- past seasons (from the old grade sheet) ----------
+  function gameTable(s) {
+    const games = s.games;
+    const head = games.map((g) => `<th class="gh${g.phase === "post" ? " post" : ""}">${esc(g.opponent)}</th>`).join("");
+    const pRows = s.players.map((p) => `<tr><td><b>${esc(p)}</b></td>${games.map((g) => `<td>${gradeChip((g.grades || {})[p])}</td>`).join("")}</tr>`).join("");
+    const sRows = [["coaches", "Coaches"], ["crowd", "Crowd"], ["opposingCoach", "Opp. coach style"]]
+      .map(([k, label], i) => `<tr class="staff${i === 0 ? " staff-first" : ""}"><td><b>${label}</b></td>${games.map((g) => `<td>${gradeChip(g[k])}</td>`).join("")}</tr>`).join("");
+    return `<div class="table-wrap" style="margin-top:8px"><table class="grades-table">
+      <thead><tr><th>Player</th>${head}</tr></thead><tbody>${pRows}${sRows}</tbody></table></div>`;
+  }
+
   function historyHtml(data) {
     const H = data.history || [];
     if (!H.length) return "";
@@ -253,6 +263,7 @@
         <div class="mini-grades">${chips(s.averages.players)}</div>
         <p class="hint">Staff</p>
         <div class="mini-grades">${chips(s.averages.staff)}</div>
+        ${s.games ? `<details><summary>Game-by-game grades (${s.games.length} games, swipe →)</summary>${gameTable(s)}</details>` : ""}
         <details><summary>Friends' old predictions (not real results)</summary>${preds(s.predictions)}</details>
       </div>`).join("");
   }
