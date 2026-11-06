@@ -300,3 +300,6 @@ tr.rival td:first-child { box-shadow: inset 4px 0 0 var(--msu); }
 .q-ans.f-msu { background: var(--msu-light); border-left: 4px solid var(--msu); }
 .q-ans.f-msu .who { color: var(--msu); }
 .q-ans.f-msu .who::after { content: " 🛡️"; }
+
+.ph { margin: 12px 0 6px; font-size: 14px; }
+h2.past { margin-top: 24px; }

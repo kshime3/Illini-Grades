@@ -786,5 +786,131 @@
   ],
   "friendThemes": {
     "Don": "msu"
-  }
+  },
+  "history": [
+    {
+      "season": "2025-26",
+      "note": "Last season",
+      "averages": {
+        "players": {
+          "Mihalo Petrovic": "C+",
+          "Kylan Boswell": "B",
+          "Andrej Stojakovic": "B",
+          "Ben Humrichous": "B-",
+          "Tomi Ivisic": "B-",
+          "Brandon Lee": "C+",
+          "Keaton Wagler": "B",
+          "David Mirkovic": "B",
+          "Zvonomir Ivisic": "C+",
+          "Jake Davis": "C",
+          "Jason Jakstys": "C",
+          "Blake Fagbemi": "C",
+          "AJ Redd": "C+"
+        },
+        "staff": {
+          "Coaches": "B",
+          "Crowd": "C+"
+        }
+      },
+      "predictions": {
+        "Record": {
+          "Shime": "22-9",
+          "Krazy": "22-9",
+          "Ross": "21-10"
+        },
+        "Conference record": {
+          "Shime": "13-7",
+          "Krazy": "13-7",
+          "Ross": "13-7"
+        },
+        "Tourney seed": {
+          "Shime": "5",
+          "Krazy": "4",
+          "Ross": "6"
+        },
+        "Tourney finish": {
+          "Shime": "S16",
+          "Krazy": "S16",
+          "Ross": "R32"
+        },
+        "Best win": {
+          "Shime": "Alabama",
+          "Krazy": "Texas Tech",
+          "Ross": "Alabama"
+        },
+        "Worst loss": {
+          "Shime": "at Nortwestern",
+          "Krazy": "Maryland",
+          "Ross": "H @USC"
+        },
+        "MVP": {
+          "Shime": "Tomi",
+          "Krazy": "Tomi",
+          "Ross": "Mihalo"
+        }
+      }
+    },
+    {
+      "season": "2024-25",
+      "note": "Season before last",
+      "averages": {
+        "players": {
+          "KJ": "A+",
+          "Boswell": "B",
+          "Tre": "B-",
+          "Hummer": "C+",
+          "Ivisic": "B+",
+          "DGL": "C+",
+          "Riley": "B",
+          "Davis": "C-",
+          "Morez": "B",
+          "Booth": "D+",
+          "Redd": "C",
+          "Kutcher": "C-"
+        },
+        "staff": {
+          "Coaches": "B",
+          "Crowd": "D+",
+          "Crowd (female variety)": "C-"
+        }
+      },
+      "predictions": {
+        "Record": {
+          "Shime": "25-5",
+          "Krazy": "21-10",
+          "Ross": "20-11"
+        },
+        "Conference record": {
+          "Shime": "17-3",
+          "Krazy": "13-7",
+          "Ross": "12-8"
+        },
+        "Tourney seed": {
+          "Shime": "2",
+          "Krazy": "4",
+          "Ross": "6"
+        },
+        "Tourney finish": {
+          "Shime": "Final 4",
+          "Krazy": "S16",
+          "Ross": "S16"
+        },
+        "Best win": {
+          "Shime": "Tennessee",
+          "Krazy": "Tennessee",
+          "Ross": "Tenneesee"
+        },
+        "Worst loss": {
+          "Shime": "None",
+          "Krazy": "Mizzou",
+          "Ross": "Ohio St (Home)"
+        },
+        "MVP": {
+          "Shime": "KJ",
+          "Krazy": "Boswell",
+          "Ross": "Tre White"
+        }
+      }
+    }
+  ]
 }

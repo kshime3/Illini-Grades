@@ -239,6 +239,24 @@
     show(start);
   }
 
+  // ---------- past seasons (from the old grade sheet) ----------
+  function historyHtml(data) {
+    const H = data.history || [];
+    if (!H.length) return "";
+    const chips = (obj) => Object.entries(obj).map(([n, g]) => `<span class="mg">${esc(n)} ${letterChip(g)}</span>`).join("");
+    const preds = (p) => Object.entries(p).map(([q, a]) => `<h3 class="ph">${esc(q)}</h3><div class="q-answers">${
+      Object.entries(a).map(([who, txt]) => `<div class="q-ans"><span class="who">${esc(who)}</span><span class="txt">${esc(txt)}</span></div>`).join("")}</div>`).join("");
+    return `<h2 class="past">Past Seasons <small>from your old grade sheet</small></h2>` + H.map((s) => `
+      <div class="card">
+        <h3>${esc(s.season)} <span class="badge">${esc(s.note || "")}</span></h3>
+        <p class="hint">Season averages</p>
+        <div class="mini-grades">${chips(s.averages.players)}</div>
+        <p class="hint">Staff</p>
+        <div class="mini-grades">${chips(s.averages.staff)}</div>
+        <details><summary>Friends' old predictions (not real results)</summary>${preds(s.predictions)}</details>
+      </div>`).join("");
+  }
+
   // ---------- boot ----------
   fetch("data.json?v=" + Date.now())
     .then((r) => { if (!r.ok) throw new Error(r.status); return r.json(); })
@@ -251,6 +269,7 @@
       renderStandings(data, lb, av);
       renderPicks(data);
       renderGrades(data, av);
+      $("#tab-grades").insertAdjacentHTML("beforeend", historyHtml(data));
       renderLog(data);
       renderQuestions(data, lb);
       setupTabs();

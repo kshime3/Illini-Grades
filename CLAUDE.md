@@ -102,6 +102,12 @@ question's `answers` (and `values`, where present) must have an entry for each f
 tagged "Rivalry"). To add a late entry, parse their form row by tabs: the form has
 "Seattle" twice and the **2nd Seattle column is always blank — skip it**, leaving 32 picks.
 
+### Past seasons (`history` in data.json)
+2025-26 (last season) and 2024-25 come from the old grade sheet: season averages
+(as typed in the sheet, not mapped to the current roster) and the friends' old
+predictions. Shown under "Past Seasons" on the Grades tab. These are NOT results,
+and they don't affect scoring. Game-by-game grades for those seasons aren't imported yet.
+
 ## Rules baked into scoring.js (confirmed with owner — don't change without asking)
 
 **Points:** 1 per correct game pick · closest Illinois record 3 · tourney seed 3 exact / 1 off-by-one ·
