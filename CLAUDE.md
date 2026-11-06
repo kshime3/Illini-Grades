@@ -106,7 +106,8 @@ tagged "Rivalry"). To add a late entry, parse their form row by tabs: the form h
 2025-26 (last season) and 2024-25 come from the old grade sheet: season averages
 (as typed in the sheet, not mapped to the current roster) and the friends' old
 predictions. Shown under "Past Seasons" on the Grades tab. These are NOT results,
-and they don't affect scoring. Game-by-game grades for those seasons aren't imported yet.
+and they don't affect scoring. 2025-26 has game-by-game grades (`games`, with `phase` reg/post and `players` order), matched by
+column position. Beverages and the projection row were skipped as unreliable. 2024-25 game-by-game is still to be imported.
 
 ## Rules baked into scoring.js (confirmed with owner — don't change without asking)
 
