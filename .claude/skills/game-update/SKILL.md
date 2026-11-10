@@ -57,7 +57,8 @@ Notes:              ____
    Do not record arousal level.
 4. **Check.** Run `node tools/check.js`. It must end with `OK ✅`. Read any `warn:` lines and
    ask about anything that looks like a typo.
-5. **Publish.** Commit `data.json` as `Game N: Illinois X, Opponent Y`, then run
+5. **Rebuild the preview card.** Run `python3 tools/make_card.py`. It redraws `img/og-card.png` with the new record and points and bumps `?v=` in `index.html`.
+6. **Publish.** Commit `data.json`, `img/og-card.png` and `index.html` as `Game N: Illinois X, Opponent Y`, then run
    `git push origin main` and `git push origin HEAD:ccr-ee39b464-lad11x`.
    If you changed `app.js`, `style.css` or `scoring.js`, bump `?v=N` in `index.html`.
-6. **Reply** with the score, the new record, the leaderboard from `check.js`, and the star of the night. Keep it short.
+7. **Reply** with the score, the new record, the leaderboard from `check.js`, and the star of the night. Keep it short.
