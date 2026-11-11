@@ -59,7 +59,9 @@ bf = f(BOLD, 30); tw = d.textlength("ILLINI GRADES", font=bf)
 d.text((bx + (bs - tw) / 2, by + bs - 52), "ILLINI GRADES", font=bf, fill=NAVY)
 tx = 380
 d.text((tx, 92), "ILLINI GRADES 2026-27", font=f(BOLD, 52), fill=(255, 255, 255))
-d.text((tx, 160), f"Illinois {rec} · Who's winning?", font=f(REG, 26), fill=CREAM)
+wins = lb["rec"]["w"] if "w" in lb["rec"] else int(rec.split("-")[0])
+pct = round(100 * wins / len(data["games"])) if data["games"] else 0
+d.text((tx, 160), f"Illinois {rec} · {pct}% of the watermelon eaten", font=f(REG, 26), fill=CREAM)
 
 # friends: one row
 px, py, pw, ph = tx, 205, 740, 62
