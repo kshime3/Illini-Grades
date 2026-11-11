@@ -58,22 +58,45 @@ d.rectangle([bx, by + bs - 62, bx + bs, by + bs - 30], fill=ORANGE)
 bf = f(BOLD, 30); tw = d.textlength("ILLINI GRADES", font=bf)
 d.text((bx + (bs - tw) / 2, by + bs - 52), "ILLINI GRADES", font=bf, fill=NAVY)
 tx = 380
-d.text((tx, 130), "ILLINI GRADES", font=f(BOLD, 72), fill=(255, 255, 255))
-d.text((tx, 212), "2026-27", font=f(BOLD, 72), fill=ORANGE)
-d.text((tx, 305), f"Illinois {rec} · Who's winning?", font=f(REG, 30), fill=CREAM)
-px, py, pw, ph = tx, 360, 740, 200
-d.rounded_rectangle([px, py, px + pw, py + ph], radius=18, fill=BLACK, outline=(60, 60, 70), width=3)
+d.text((tx, 92), "ILLINI GRADES 2026-27", font=f(BOLD, 52), fill=(255, 255, 255))
+d.text((tx, 160), f"Illinois {rec} · Who's winning?", font=f(REG, 26), fill=CREAM)
+
+# friends: one row
+px, py, pw, ph = tx, 205, 740, 62
+d.rounded_rectangle([px, py, px + pw, py + ph], radius=14, fill=BLACK, outline=(60, 60, 70), width=2)
+cw = pw / len(rows[:4])
 for i, r in enumerate(rows[:4]):
-    y = py + 22 + i * 44
-    d.text((px + 30, y + 4), str(i + 1), font=f(REG, 24), fill=MUTED)
-    d.text((px + 70, y), r["friend"].upper(), font=f(BOLD, 30), fill=GOLD)
-    pts = f"{r['total']} pt" if r["total"] == 1 else f"{r['total']} pts"
-    tw2 = d.textlength(pts, font=f(BOLD, 30))
-    d.text((px + pw - 40 - tw2, y), pts, font=f(BOLD, 30), fill=GOLD)
-    if i < 3: d.line([px + 30, y + 40, px + pw - 30, y + 40], fill=(60, 60, 70), width=1)
-sub = "Scored through game %d" % played if played else "Tip-off soon"
-d.text((px + 30, py + ph + 14), sub, font=f(REG, 22), fill=MUTED)
+    x0 = px + i * cw
+    txt = f"{r['friend'].upper()} {r['total']}"
+    tw2 = d.textlength(txt, font=f(BOLD, 26))
+    d.text((x0 + (cw - tw2) / 2, py + 17), txt, font=f(BOLD, 26), fill=GOLD)
+
+# last game grades
+last = max((g for g in data["games"] if g.get("result")), key=lambda g: g["id"], default=None)
+gy = 285
+d.rounded_rectangle([px, gy, px + pw, 596], radius=14, fill=BLACK, outline=(60, 60, 70), width=2)
+if last:
+    res = last["result"]
+    head = f"{last['opponent'].upper()} {res['illinois']}-{res['opponent']} · PLAYER GRADES"
+    d.text((px + 16, gy + 12), head, font=f(BOLD, 20), fill=MUTED)
+    def short_grade(g):
+        if g is None or g == "": return "—"
+        if "DNP" in g.upper(): return "DNP"
+        m = re.match(r"^\s*([SABCDF][+\-]*)", g)
+        return m.group(1) if m else "—"
+    players = data["roster"]
+    cols, rowsN = 5, 3
+    cell_w = (pw - 32) / cols
+    for idx, pl in enumerate(players[:cols * rowsN]):
+        c_i, r_i = idx % cols, idx // cols
+        x0 = px + 16 + c_i * cell_w
+        y0 = gy + 46 + r_i * 58
+        g = short_grade((res.get("grades") or {}).get(pl["name"]))
+        nm = pl["display"][:12]
+        d.text((x0, y0), nm, font=f(REG, 18), fill=CREAM)
+        d.text((x0, y0 + 20), g, font=f(BOLD, 24), fill=MUTED if g in ("DNP", "—") else GOLD)
 d.rectangle([0, H - 14, W, H], fill=GOLD)
+sub = "Scored through game %d" % played if played else "Tip-off soon"
 im.save("img/og-card.png", optimize=True)
 
 # bump ?v= so messaging apps fetch the new picture

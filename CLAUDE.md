@@ -149,5 +149,5 @@ Standings shows a Watermelon Corner card: the melon gets bitten a bit more with 
 (wins / games in data.json), and the Watermelon Award goes to whoever has the fewest correct picks so far.
 
 ### Link-preview card
-`python3 tools/make_card.py` redraws `img/og-card.png` (record + each friend's points) and bumps the `?v=`
+`python3 tools/make_card.py` redraws `img/og-card.png` (record, each friend's points, and the most recent game's player grades) and bumps the `?v=`
 number on `og:image` in index.html. Run it after every game entry, and commit the image with index.html.
