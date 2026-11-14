@@ -67,13 +67,15 @@
     const contrarian = F.map((f) => ({ f, n: data.games.filter((g) => F.filter((o) => o !== f).every((o) => g.picks[o] !== g.picks[f])).length }))
       .sort((a, b) => b.n - a.n)[0];
 
+    const CR = S.credits(data);
     const rows = lb.rows.map((r) => {
       const imp = S.impliedRecord(data, r.friend);
       const pct = played.length ? Math.round((r.correct / played.length) * 100) : 0;
       return `<div class="lb-row r${r.rank}${th(r.friend)}">
         <div class="lb-rank">${r.rank === 1 && lb.gamesPlayed ? "👑" : "#" + r.rank}</div>
+        ${avatar(data, r.friend, 54)}
         <div><div class="lb-name">${esc(r.friend)}${badge(r.friend)}</div>
-          <div class="lb-detail">Picks ${r.correct}-${r.wrong}${played.length ? ` (${pct}%)` : ""} · bonus ${r.bonusPts} · predicted ${imp.text}</div>
+          <div class="lb-detail">Picks ${r.correct}-${r.wrong}${played.length ? ` (${pct}%)` : ""} · bonus ${r.bonusPts} · predicted ${imp.text} · ${CR[r.friend] ? CR[r.friend].available : 0} credits</div>
           <div class="bar"><i style="width:${pct}%"></i></div></div>
         <div class="lb-pts">${r.total}<small>PTS</small></div></div>`;
     }).join("");
@@ -89,6 +91,7 @@
         <div class="stat"><b>${disputed}</b><span>Games the group disagreed on</span></div>
         <div class="stat"><b>${contrarian && contrarian.n ? esc(contrarian.f) : "—"}</b><span>Biggest contrarian${contrarian && contrarian.n ? ` (${contrarian.n} solo picks)` : ""}</span></div>
       </div>
+      ${lockerRoomCard(data)}
       ${melonCard(data)}`;
   }
 
@@ -291,6 +294,64 @@
         <thead><tr><th>Stat</th><th>Actual</th>${F.map((f) => `<th>${esc(f)}</th>`).join("")}</tr></thead>
         <tbody>${rows}</tbody></table></div>
       <p class="hint">✓ = right. Best win, worst loss and MVP get marked once they're decided.</p>`;
+  }
+
+  // ---------- characters (cartoon avatars + locker room) ----------
+  function avatar(data, friend, px) {
+    const c = (data.characters || {})[friend];
+    if (!c) return "";
+    const shop = data.shop || {};
+    const jersey = (shop.jersey || {})[c.jersey] || { color: "#FF5F05" };
+    const hat = (shop.hat || {})[c.hat] || { label: "No hat" };
+    const court = (shop.court || {})[c.court] || { bg: "#f3d9b1" };
+    const hatSvg = {
+      headband: `<rect x="30" y="22" width="40" height="6" rx="3" fill="${hat.color}"/>`,
+      cap: `<path d="M28 26 Q50 2 72 26 Z" fill="${hat.color}"/><rect x="26" y="25" width="34" height="5" rx="2.5" fill="${hat.color}"/>`,
+      crown: `<path d="M32 24 L36 6 L44 18 L50 2 L56 18 L64 6 L68 24 Z" fill="${hat.color}" stroke="#7a5a00" stroke-width="2"/>`,
+    }[c.hat] || "";
+    return `<div class="avatar" style="width:${px}px;height:${px}px" aria-label="${esc(friend)}'s character">
+      <svg viewBox="0 0 100 100">
+        <rect width="100" height="100" rx="18" fill="${court.bg}"/>
+        <g class="bob">
+          <rect x="34" y="60" width="32" height="26" rx="8" fill="${jersey.color}"/>
+          <path d="M42 62 L50 74 L58 62" fill="none" stroke="#ffffff" stroke-width="2" opacity=".7"/>
+          <rect x="22" y="62" width="11" height="22" rx="5.5" fill="#f1c27d" transform="rotate(12 27 62)"/>
+          <rect x="67" y="62" width="11" height="22" rx="5.5" fill="#f1c27d" transform="rotate(-12 72 62)"/>
+          <rect x="36" y="84" width="10" height="16" rx="4" fill="#ffffff"/>
+          <rect x="54" y="84" width="10" height="16" rx="4" fill="#ffffff"/>
+          <circle cx="50" cy="40" r="18" fill="#f1c27d"/>
+          ${hatSvg}
+          <circle cx="44" cy="41" r="2.4" fill="#2b1b0e"/><circle cx="56" cy="41" r="2.4" fill="#2b1b0e"/>
+          <path d="M43 50 Q50 56 57 50" fill="none" stroke="#2b1b0e" stroke-width="2.4" stroke-linecap="round"/>
+          <g class="dribble"><circle cx="82" cy="78" r="9" fill="#FF5F05" stroke="#7a2a05" stroke-width="2"/>
+          <path d="M73 78 H91 M82 69 V87" stroke="#7a2a05" stroke-width="1.6"/></g>
+        </g>
+      </svg></div>`;
+  }
+
+  function lockerRoomCard(data) {
+    const CR = S.credits(data);
+    const shop = data.shop || {};
+    const F = data.friends;
+    const cards = F.map((f) => {
+      const c = CR[f] || { earned: 0, spent: 0, available: 0 };
+      const ch = (data.characters || {})[f] || {};
+      const lab = (cat) => ((shop[cat] || {})[ch[cat]] || {}).label || "—";
+      return `<div class="locker-card">${avatar(data, f, 86)}
+        <div class="locker-name">${esc(f)}${badge(f)}</div>
+        <div class="locker-credits"><b>${c.available}</b> credits</div>
+        <div class="locker-sub">${esc(lab("jersey"))} jersey · ${esc(lab("hat"))} · ${esc(lab("court"))}</div></div>`;
+    }).join("");
+    const menu = ["jersey", "hat", "court"].map((cat) => {
+      const items = Object.entries(shop[cat] || {}).map(([k, v]) => `<li><span>${esc(v.label)}</span><span>${v.cost ? v.cost + " credits" : "free"}</span></li>`).join("");
+      return `<div><h3>${{ jersey: "Jerseys", hat: "Hats", court: "Backgrounds" }[cat]}</h3><ul class="shop-list">${items}</ul></div>`;
+    }).join("");
+    return `<div class="card locker">
+      <h3>🎽 Locker Room <small>earn credits by picking right</small></h3>
+      <p class="hint">1 credit per correct game pick, plus bonus credits from the season questions. Credits only go up.</p>
+      <div class="locker-grid">${cards}</div>
+      <details><summary>Shop prices</summary><div class="shop">${menu}</div></details>
+    </div>`;
   }
 
   // ---------- watermelon corner (meme) ----------

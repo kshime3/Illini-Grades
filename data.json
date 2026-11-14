@@ -2641,5 +2641,89 @@
       ],
       "caption": "Walking to the stadium, we passed a watermelon next to a pack of ramen. When we got back, the ramen was inside the watermelon. A few days later, the watermelon was half eaten. Nobody has explained this."
     }
+  },
+  "shop": {
+    "jersey": {
+      "orange": {
+        "label": "Orange",
+        "color": "#FF5F05",
+        "cost": 0
+      },
+      "navy": {
+        "label": "Navy",
+        "color": "#13294B",
+        "cost": 5
+      },
+      "gold": {
+        "label": "Gold",
+        "color": "#FFB81C",
+        "cost": 10
+      },
+      "green": {
+        "label": "Spartan green",
+        "color": "#18453B",
+        "cost": 15
+      }
+    },
+    "hat": {
+      "none": {
+        "label": "No hat",
+        "cost": 0
+      },
+      "headband": {
+        "label": "Headband",
+        "cost": 3,
+        "color": "#ffffff"
+      },
+      "cap": {
+        "label": "Cap",
+        "cost": 6,
+        "color": "#13294B"
+      },
+      "crown": {
+        "label": "Crown",
+        "cost": 12,
+        "color": "#FFB81C"
+      }
+    },
+    "court": {
+      "hardwood": {
+        "label": "Hardwood",
+        "bg": "#f3d9b1",
+        "cost": 0
+      },
+      "night": {
+        "label": "Night game",
+        "bg": "#1d3a66",
+        "cost": 8
+      },
+      "sunset": {
+        "label": "Sunset",
+        "bg": "#ffb27a",
+        "cost": 10
+      }
+    }
+  },
+  "characters": {
+    "Shime": {
+      "jersey": "orange",
+      "hat": "none",
+      "court": "hardwood"
+    },
+    "Krazy": {
+      "jersey": "orange",
+      "hat": "none",
+      "court": "hardwood"
+    },
+    "Ross": {
+      "jersey": "orange",
+      "hat": "none",
+      "court": "hardwood"
+    },
+    "Don": {
+      "jersey": "orange",
+      "hat": "none",
+      "court": "hardwood"
+    }
   }
 }
