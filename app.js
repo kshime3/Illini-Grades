@@ -307,6 +307,12 @@
     const top = lb.rows.length ? Math.max(...lb.rows.map((r) => r.total)) : 0;
     return top > 0 ? lb.rows.filter((r) => r.total === top).map((r) => r.friend) : [];
   }
+  function shade(hex, f) {
+    const n = parseInt(hex.replace("#", ""), 16);
+    const ch = (v) => Math.max(0, Math.min(255, Math.round(v * f)));
+    const r = ch((n >> 16) & 255), g = ch((n >> 8) & 255), b = ch(n & 255);
+    return "#" + [r, g, b].map((v) => v.toString(16).padStart(2, "0")).join("");
+  }
   function avatar(data, friend, px) {
     const c = (data.characters || {})[friend];
     if (!c) return "";
@@ -315,44 +321,49 @@
     const L = levelFor(data, row.total);
     const onFire = leaderNames(lb).includes(friend) && lb.gamesPlayed > 0;
     const sid = "av" + friend.replace(/\W/g, "") + px;
-    const skin = "#e8b889";
-    const J = c.color;
-    const dark = "#0b1a33";
+    const J = c.color, Jd = shade(J, 0.55), Jl = shade(J, 1.12);
     const name = friend.toUpperCase();
     const flames = onFire ? `
       <g class="flames">
-        <path class="f1" d="M0 200 Q16 158 6 138 Q36 156 46 124 Q60 162 80 118 Q98 160 114 126 Q130 160 152 130 Q166 156 194 138 Q186 166 200 200 Z" fill="url(#${sid}fire)"/>
-        <path class="f2" d="M0 200 Q26 166 20 150 Q50 168 64 136 Q84 172 100 132 Q118 170 136 142 Q152 168 180 154 Q176 178 200 200 Z" fill="url(#${sid}fire2)" opacity=".9"/>
+        <path class="f1" d="M0 400 L0 330 Q18 300 14 262 Q40 292 48 252 Q62 290 82 236 Q96 286 110 246 Q124 282 142 226 Q160 282 176 240 Q190 270 200 214 Q212 270 226 240 Q240 282 258 226 Q276 282 290 246 Q304 286 318 236 Q338 290 352 252 Q360 292 386 330 L400 330 L400 400 Z" fill="url(#${sid}fl)" opacity=".92"/>
+        <path class="f2" d="M0 400 L0 360 Q24 336 30 306 Q52 330 66 298 Q84 330 104 296 Q124 330 150 302 Q170 332 200 290 Q230 332 250 302 Q276 330 296 296 Q316 330 336 298 Q352 330 370 306 Q378 336 400 360 L400 400 Z" fill="#ffb300" opacity=".85"/>
       </g>` : "";
     return `<div class="avatar${onFire ? " on-fire" : ""}" style="width:${px}px;height:${px}px" aria-label="${esc(friend)}'s card">
-      <svg viewBox="0 0 200 200">
+      <svg viewBox="0 0 400 400">
         <defs>
-          <linearGradient id="${sid}bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1d3a66"/><stop offset="1" stop-color="${dark}"/></linearGradient>
-          <linearGradient id="${sid}jer" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${J}"/><stop offset="1" stop-color="${J}" stop-opacity=".55"/></linearGradient>
-          <linearGradient id="${sid}skin" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f2cba0"/><stop offset="1" stop-color="${skin}"/></linearGradient>
-          <linearGradient id="${sid}fire" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffd166"/><stop offset=".45" stop-color="#ff7a00"/><stop offset="1" stop-color="#c62828"/></linearGradient>
-          <linearGradient id="${sid}fire2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff3a0"/><stop offset=".5" stop-color="#ff9f1c"/><stop offset="1" stop-color="#e53935"/></linearGradient>
-          <radialGradient id="${sid}glow" cx=".5" cy="0" r="1"><stop offset="0" stop-color="#fff" stop-opacity=".45"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient>
+          <linearGradient id="${sid}bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#22457d"/><stop offset="1" stop-color="#08142a"/></linearGradient>
+          <radialGradient id="${sid}spot" cx=".5" cy="0" r=".8"><stop offset="0" stop-color="#ffffff" stop-opacity=".35"/><stop offset="1" stop-color="#ffffff" stop-opacity="0"/></radialGradient>
+          <linearGradient id="${sid}jer" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="${Jl}"/><stop offset=".5" stop-color="${J}"/><stop offset="1" stop-color="${Jd}"/></linearGradient>
+          <radialGradient id="${sid}skin" cx=".38" cy=".35" r=".75"><stop offset="0" stop-color="#f6d2aa"/><stop offset=".7" stop-color="#e2a878"/><stop offset="1" stop-color="#c98a5c"/></radialGradient>
+          <linearGradient id="${sid}hair" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2a1d14"/><stop offset="1" stop-color="#140d08"/></linearGradient>
+          <filter id="${sid}soft"><feGaussianBlur stdDeviation="6"/></filter>
+          <linearGradient id="${sid}fl" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#b71c1c"/><stop offset=".35" stop-color="#ff6d00"/><stop offset=".7" stop-color="#ffb300"/><stop offset="1" stop-color="#fff59d"/></linearGradient>
         </defs>
-        <rect width="200" height="200" fill="url(#${sid}bg)"/>
-        ${L >= 5 ? `<g opacity=".18"><polygon points="70,0 90,0 150,200 110,200" fill="#fff"/><polygon points="110,0 124,0 170,200 140,200" fill="#fff"/></g><ellipse cx="100" cy="0" rx="120" ry="60" fill="url(#${sid}glow)"/>` : ""}
+        <rect width="400" height="400" fill="url(#${sid}bg)"/>
+        <rect width="400" height="400" fill="url(#${sid}spot)"/>
+        ${L >= 5 ? `<g opacity=".18"><polygon points="140,0 180,0 300,400 220,400" fill="#fff"/><polygon points="220,0 248,0 340,400 280,400" fill="#fff"/></g>` : ""}
         ${flames}
-        <path d="M24 200 L24 152 Q26 130 58 122 L80 116 Q100 128 120 116 L142 122 Q174 130 176 152 L176 200 Z" fill="url(#${sid}jer)"/>
-        ${L >= 1 ? `<rect x="36" y="142" width="5" height="58" fill="#ffffff" opacity=".9"/><rect x="159" y="142" width="5" height="58" fill="#ffffff" opacity=".9"/>` : ""}
-        ${L >= 3 ? `<path d="M52 128 Q100 116 148 128" fill="none" stroke="#ffffff" stroke-width="5" opacity=".85"/><path d="M57 136 Q100 124 143 136" fill="none" stroke="#ffffff" stroke-width="2" opacity=".6"/>` : ""}
-        ${L >= 6 ? `<path d="M80 116 Q100 130 120 116" fill="none" stroke="#FFB81C" stroke-width="5"/><path d="M24 200 L24 152 Q26 130 58 122" fill="none" stroke="#FFB81C" stroke-width="3" opacity=".9"/>` : ""}
-        <path d="M80 116 Q100 132 120 116 L120 96 L80 96 Z" fill="${skin}" opacity=".0"/>
-        <rect x="86" y="96" width="28" height="28" rx="8" fill="url(#${sid}skin)"/>
-        <ellipse cx="76" cy="76" rx="4.5" ry="6.5" fill="${skin}"/><ellipse cx="124" cy="76" rx="4.5" ry="6.5" fill="${skin}"/>
-        <ellipse cx="100" cy="74" rx="24" ry="28" fill="url(#${sid}skin)"/>
-        <path d="M75 70 Q75 38 100 38 Q125 38 125 70 Q119 54 100 54 Q82 54 75 70 Z" fill="#1e1410"/>
-        ${L >= 3 ? `<rect x="76" y="50" width="48" height="6" rx="3" fill="${dark}" opacity=".9"/>` : ""}
-        <ellipse cx="91" cy="76" rx="3.2" ry="2.4" fill="#1e1410"/><ellipse cx="109" cy="76" rx="3.2" ry="2.4" fill="#1e1410"/>
-        <path d="M86 67 Q91 64 96 67 M104 67 Q109 64 114 67" fill="none" stroke="#1e1410" stroke-width="1.8" stroke-linecap="round"/>
-        <path d="M100 80 Q97 88 101 90" fill="none" stroke="#7a4a2a" stroke-width="1.6" stroke-linecap="round"/>
-        <path d="M92 99 Q100 103 108 99" fill="none" stroke="#7a2a1e" stroke-width="2" stroke-linecap="round"/>
-        ${L >= 2 ? `<rect x="72" y="150" width="56" height="16" rx="3" fill="#ffffff" opacity=".95"/><text x="100" y="161.5" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="9" font-weight="700" fill="${dark}">${esc(name.slice(0, 10))}</text>` : ""}
-        ${L >= 4 ? `<text x="100" y="196" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="46" font-weight="700" fill="#ffffff" opacity=".22">${c.number}</text><circle cx="132" cy="136" r="7" fill="#FFB81C"/><text x="132" y="139.5" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="9" font-weight="700" fill="${dark}">C</text>` : ""}
+        <path d="M48 400 L48 304 Q52 260 116 244 L160 232 Q200 256 240 232 L284 244 Q348 260 352 304 L352 400 Z" fill="url(#${sid}jer)"/>
+        <path d="M120 300 Q140 340 132 400 M280 300 Q262 340 270 400" fill="none" stroke="#000" stroke-opacity=".18" stroke-width="5"/>
+        <path d="M160 232 Q200 262 240 232" fill="none" stroke="#fff" stroke-width="6" opacity=".85"/>
+        ${L >= 1 ? `<rect x="56" y="318" width="9" height="82" fill="#ffffff" opacity=".9"/><rect x="335" y="318" width="9" height="82" fill="#ffffff" opacity=".9"/>` : ""}
+        ${L >= 3 ? `<path d="M60 316 Q200 300 340 316" fill="none" stroke="#fff" stroke-width="5" opacity=".9"/><path d="M60 330 Q200 314 340 330" fill="none" stroke="#fff" stroke-width="2" opacity=".6"/>` : ""}
+        ${L >= 6 ? `<path d="M160 232 Q200 262 240 232" fill="none" stroke="#FFB81C" stroke-width="7"/>` : ""}
+        <rect x="172" y="194" width="56" height="60" rx="18" fill="url(#${sid}skin)"/>
+        <ellipse cx="152" cy="156" rx="10" ry="15" fill="#e2a878"/><ellipse cx="248" cy="156" rx="10" ry="15" fill="#e2a878"/>
+        <ellipse cx="200" cy="150" rx="50" ry="58" fill="url(#${sid}skin)"/>
+        <ellipse cx="180" cy="176" rx="18" ry="12" fill="#b0653a" opacity=".22" filter="url(#${sid}soft)"/>
+        <ellipse cx="220" cy="176" rx="18" ry="12" fill="#b0653a" opacity=".22" filter="url(#${sid}soft)"/>
+        <path d="M150 136 Q148 96 200 92 Q252 96 250 136 Q240 116 200 112 Q160 116 150 136 Z" fill="url(#${sid}hair)"/>
+        ${L >= 3 ? `<rect x="150" y="122" width="100" height="6" rx="3" fill="${shade(J, 0.45)}"/>` : ""}
+        <path d="M172 136 Q182 130 192 136" fill="none" stroke="#2a1d14" stroke-width="4" stroke-linecap="round"/>
+        <path d="M208 136 Q218 130 228 136" fill="none" stroke="#2a1d14" stroke-width="4" stroke-linecap="round"/>
+        <ellipse cx="182" cy="150" rx="7" ry="5" fill="#fff"/><ellipse cx="218" cy="150" rx="7" ry="5" fill="#fff"/>
+        <circle cx="183" cy="151" r="3.6" fill="#2b1a10"/><circle cx="219" cy="151" r="3.6" fill="#2b1a10"/>
+        <path d="M200 156 Q194 176 202 180" fill="none" stroke="#8a4f2c" stroke-width="2.6" stroke-linecap="round"/>
+        <path d="M186 194 Q200 202 214 194" fill="none" stroke="#7a2e22" stroke-width="3.2" stroke-linecap="round"/>
+        ${L >= 2 ? `<rect x="128" y="300" width="144" height="34" rx="6" fill="#ffffff"/><text x="200" y="324" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="22" font-weight="700" fill="${shade(J, 0.35)}" letter-spacing="2">${esc(name.slice(0, 9))}</text>` : ""}
+        ${L >= 4 ? `<text x="200" y="392" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="92" font-weight="700" fill="#ffffff" opacity=".16">${c.number}</text><circle cx="268" cy="272" r="15" fill="#FFB81C"/><text x="268" y="279" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="17" font-weight="700" fill="#0b1a33">C</text>` : ""}
       </svg></div>`;
   }
 
