@@ -19,8 +19,7 @@ if (i > -1) {
 }
 
 const { errors, warnings } = S.validate(data);
-const cr = S.credits(data);
-Object.entries(cr).forEach(([f, c]) => { if (c.available < 0) errors.push(`${f} has spent ${c.spent} credits but only earned ${c.earned}`); });
+
 warnings.forEach((w) => console.log("warn: " + w));
 if (errors.length) { errors.forEach((e) => console.log("ERROR: " + e)); process.exit(1); }
 

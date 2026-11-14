@@ -67,7 +67,6 @@
     const contrarian = F.map((f) => ({ f, n: data.games.filter((g) => F.filter((o) => o !== f).every((o) => g.picks[o] !== g.picks[f])).length }))
       .sort((a, b) => b.n - a.n)[0];
 
-    const CR = S.credits(data);
     const rows = lb.rows.map((r) => {
       const imp = S.impliedRecord(data, r.friend);
       const pct = played.length ? Math.round((r.correct / played.length) * 100) : 0;
@@ -75,7 +74,7 @@
         <div class="lb-rank">${r.rank === 1 && lb.gamesPlayed ? "👑" : "#" + r.rank}</div>
         ${avatar(data, r.friend, 54)}
         <div><div class="lb-name">${esc(r.friend)}${badge(r.friend)}</div>
-          <div class="lb-detail">Picks ${r.correct}-${r.wrong}${played.length ? ` (${pct}%)` : ""} · bonus ${r.bonusPts} · predicted ${imp.text} · ${CR[r.friend] ? CR[r.friend].available : 0} credits</div>
+          <div class="lb-detail">Picks ${r.correct}-${r.wrong}${played.length ? ` (${pct}%)` : ""} · bonus ${r.bonusPts} · predicted ${imp.text} · ${lockerLevel(data, r.total)}</div>
           <div class="bar"><i style="width:${pct}%"></i></div></div>
         <div class="lb-pts">${r.total}<small>PTS</small></div></div>`;
     }).join("");
@@ -296,61 +295,88 @@
       <p class="hint">✓ = right. Best win, worst loss and MVP get marked once they're decided.</p>`;
   }
 
-  // ---------- characters (cartoon avatars + locker room) ----------
+  // ---------- characters (sports-card busts that level up with points) ----------
+  function lockerLevel(data, pts) {
+    const L = levelFor(data, pts), ms = data.milestones || [];
+    return L ? ms[L - 1].name : "Base look";
+  }
+  function levelFor(data, pts) {
+    return (data.milestones || []).filter((m) => pts >= m.pts).length;
+  }
+  function leaderNames(lb) {
+    const top = lb.rows.length ? Math.max(...lb.rows.map((r) => r.total)) : 0;
+    return top > 0 ? lb.rows.filter((r) => r.total === top).map((r) => r.friend) : [];
+  }
   function avatar(data, friend, px) {
     const c = (data.characters || {})[friend];
     if (!c) return "";
-    const shop = data.shop || {};
-    const jersey = (shop.jersey || {})[c.jersey] || { color: "#FF5F05" };
-    const hat = (shop.hat || {})[c.hat] || { label: "No hat" };
-    const court = (shop.court || {})[c.court] || { bg: "#f3d9b1" };
-    const hatSvg = {
-      headband: `<rect x="30" y="22" width="40" height="6" rx="3" fill="${hat.color}"/>`,
-      cap: `<path d="M28 26 Q50 2 72 26 Z" fill="${hat.color}"/><rect x="26" y="25" width="34" height="5" rx="2.5" fill="${hat.color}"/>`,
-      crown: `<path d="M32 24 L36 6 L44 18 L50 2 L56 18 L64 6 L68 24 Z" fill="${hat.color}" stroke="#7a5a00" stroke-width="2"/>`,
-    }[c.hat] || "";
-    return `<div class="avatar" style="width:${px}px;height:${px}px" aria-label="${esc(friend)}'s character">
-      <svg viewBox="0 0 100 100">
-        <rect width="100" height="100" rx="18" fill="${court.bg}"/>
-        <g class="bob">
-          <rect x="34" y="60" width="32" height="26" rx="8" fill="${jersey.color}"/>
-          <path d="M42 62 L50 74 L58 62" fill="none" stroke="#ffffff" stroke-width="2" opacity=".7"/>
-          <rect x="22" y="62" width="11" height="22" rx="5.5" fill="#f1c27d" transform="rotate(12 27 62)"/>
-          <rect x="67" y="62" width="11" height="22" rx="5.5" fill="#f1c27d" transform="rotate(-12 72 62)"/>
-          <rect x="36" y="84" width="10" height="16" rx="4" fill="#ffffff"/>
-          <rect x="54" y="84" width="10" height="16" rx="4" fill="#ffffff"/>
-          <circle cx="50" cy="40" r="18" fill="#f1c27d"/>
-          ${hatSvg}
-          <circle cx="44" cy="41" r="2.4" fill="#2b1b0e"/><circle cx="56" cy="41" r="2.4" fill="#2b1b0e"/>
-          <path d="M43 50 Q50 56 57 50" fill="none" stroke="#2b1b0e" stroke-width="2.4" stroke-linecap="round"/>
-          <g class="dribble"><circle cx="82" cy="78" r="9" fill="#FF5F05" stroke="#7a2a05" stroke-width="2"/>
-          <path d="M73 78 H91 M82 69 V87" stroke="#7a2a05" stroke-width="1.6"/></g>
-        </g>
+    const lb = S.leaderboard(data);
+    const row = lb.rows.find((r) => r.friend === friend) || { total: 0 };
+    const L = levelFor(data, row.total);
+    const onFire = leaderNames(lb).includes(friend) && lb.gamesPlayed > 0;
+    const sid = "av" + friend.replace(/\W/g, "") + px;
+    const skin = "#e8b889";
+    const J = c.color;
+    const dark = "#0b1a33";
+    const name = friend.toUpperCase();
+    const flames = onFire ? `
+      <g class="flames">
+        <path class="f1" d="M0 200 Q16 158 6 138 Q36 156 46 124 Q60 162 80 118 Q98 160 114 126 Q130 160 152 130 Q166 156 194 138 Q186 166 200 200 Z" fill="url(#${sid}fire)"/>
+        <path class="f2" d="M0 200 Q26 166 20 150 Q50 168 64 136 Q84 172 100 132 Q118 170 136 142 Q152 168 180 154 Q176 178 200 200 Z" fill="url(#${sid}fire2)" opacity=".9"/>
+      </g>` : "";
+    return `<div class="avatar${onFire ? " on-fire" : ""}" style="width:${px}px;height:${px}px" aria-label="${esc(friend)}'s card">
+      <svg viewBox="0 0 200 200">
+        <defs>
+          <linearGradient id="${sid}bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1d3a66"/><stop offset="1" stop-color="${dark}"/></linearGradient>
+          <linearGradient id="${sid}jer" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${J}"/><stop offset="1" stop-color="${J}" stop-opacity=".55"/></linearGradient>
+          <linearGradient id="${sid}skin" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f2cba0"/><stop offset="1" stop-color="${skin}"/></linearGradient>
+          <linearGradient id="${sid}fire" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffd166"/><stop offset=".45" stop-color="#ff7a00"/><stop offset="1" stop-color="#c62828"/></linearGradient>
+          <linearGradient id="${sid}fire2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff3a0"/><stop offset=".5" stop-color="#ff9f1c"/><stop offset="1" stop-color="#e53935"/></linearGradient>
+          <radialGradient id="${sid}glow" cx=".5" cy="0" r="1"><stop offset="0" stop-color="#fff" stop-opacity=".45"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient>
+        </defs>
+        <rect width="200" height="200" fill="url(#${sid}bg)"/>
+        ${L >= 5 ? `<g opacity=".18"><polygon points="70,0 90,0 150,200 110,200" fill="#fff"/><polygon points="110,0 124,0 170,200 140,200" fill="#fff"/></g><ellipse cx="100" cy="0" rx="120" ry="60" fill="url(#${sid}glow)"/>` : ""}
+        ${flames}
+        <path d="M24 200 L24 152 Q26 130 58 122 L80 116 Q100 128 120 116 L142 122 Q174 130 176 152 L176 200 Z" fill="url(#${sid}jer)"/>
+        ${L >= 1 ? `<rect x="36" y="142" width="5" height="58" fill="#ffffff" opacity=".9"/><rect x="159" y="142" width="5" height="58" fill="#ffffff" opacity=".9"/>` : ""}
+        ${L >= 3 ? `<path d="M52 128 Q100 116 148 128" fill="none" stroke="#ffffff" stroke-width="5" opacity=".85"/><path d="M57 136 Q100 124 143 136" fill="none" stroke="#ffffff" stroke-width="2" opacity=".6"/>` : ""}
+        ${L >= 6 ? `<path d="M80 116 Q100 130 120 116" fill="none" stroke="#FFB81C" stroke-width="5"/><path d="M24 200 L24 152 Q26 130 58 122" fill="none" stroke="#FFB81C" stroke-width="3" opacity=".9"/>` : ""}
+        <path d="M80 116 Q100 132 120 116 L120 96 L80 96 Z" fill="${skin}" opacity=".0"/>
+        <rect x="86" y="96" width="28" height="28" rx="8" fill="url(#${sid}skin)"/>
+        <ellipse cx="76" cy="76" rx="4.5" ry="6.5" fill="${skin}"/><ellipse cx="124" cy="76" rx="4.5" ry="6.5" fill="${skin}"/>
+        <ellipse cx="100" cy="74" rx="24" ry="28" fill="url(#${sid}skin)"/>
+        <path d="M75 70 Q75 38 100 38 Q125 38 125 70 Q119 54 100 54 Q82 54 75 70 Z" fill="#1e1410"/>
+        ${L >= 3 ? `<rect x="76" y="50" width="48" height="6" rx="3" fill="${dark}" opacity=".9"/>` : ""}
+        <ellipse cx="91" cy="76" rx="3.2" ry="2.4" fill="#1e1410"/><ellipse cx="109" cy="76" rx="3.2" ry="2.4" fill="#1e1410"/>
+        <path d="M86 67 Q91 64 96 67 M104 67 Q109 64 114 67" fill="none" stroke="#1e1410" stroke-width="1.8" stroke-linecap="round"/>
+        <path d="M100 80 Q97 88 101 90" fill="none" stroke="#7a4a2a" stroke-width="1.6" stroke-linecap="round"/>
+        <path d="M92 99 Q100 103 108 99" fill="none" stroke="#7a2a1e" stroke-width="2" stroke-linecap="round"/>
+        ${L >= 2 ? `<rect x="72" y="150" width="56" height="16" rx="3" fill="#ffffff" opacity=".95"/><text x="100" y="161.5" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="9" font-weight="700" fill="${dark}">${esc(name.slice(0, 10))}</text>` : ""}
+        ${L >= 4 ? `<text x="100" y="196" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="46" font-weight="700" fill="#ffffff" opacity=".22">${c.number}</text><circle cx="132" cy="136" r="7" fill="#FFB81C"/><text x="132" y="139.5" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="9" font-weight="700" fill="${dark}">C</text>` : ""}
       </svg></div>`;
   }
 
   function lockerRoomCard(data) {
-    const CR = S.credits(data);
-    const shop = data.shop || {};
-    const F = data.friends;
-    const cards = F.map((f) => {
-      const c = CR[f] || { earned: 0, spent: 0, available: 0 };
-      const ch = (data.characters || {})[f] || {};
-      const lab = (cat) => ((shop[cat] || {})[ch[cat]] || {}).label || "—";
-      return `<div class="locker-card">${avatar(data, f, 86)}
+    const lb = S.leaderboard(data);
+    const ms = data.milestones || [];
+    const cards = data.friends.map((f) => {
+      const row = lb.rows.find((r) => r.friend === f) || { total: 0 };
+      const L = levelFor(data, row.total);
+      const cur = L ? ms[L - 1] : null;
+      const next = ms[L];
+      const leader = leaderNames(lb).includes(f) && lb.gamesPlayed > 0;
+      return `<div class="locker-card">${avatar(data, f, 110)}
         <div class="locker-name">${esc(f)}${badge(f)}</div>
-        <div class="locker-credits"><b>${c.available}</b> credits</div>
-        <div class="locker-sub">${esc(lab("jersey"))} jersey · ${esc(lab("hat"))} · ${esc(lab("court"))}</div></div>`;
+        <div class="locker-credits"><b>${row.total}</b> pts</div>
+        <div class="locker-sub">${cur ? esc(cur.name) + " · " + esc(cur.look) : "Base look"}</div>
+        <div class="locker-sub">${next ? (next.pts - row.total) + " pts to " + esc(next.name) : "Max level"}${leader ? " · 🔥 on fire" : ""}</div></div>`;
     }).join("");
-    const menu = ["jersey", "hat", "court"].map((cat) => {
-      const items = Object.entries(shop[cat] || {}).map(([k, v]) => `<li><span>${esc(v.label)}</span><span>${v.cost ? v.cost + " credits" : "free"}</span></li>`).join("");
-      return `<div><h3>${{ jersey: "Jerseys", hat: "Hats", court: "Backgrounds" }[cat]}</h3><ul class="shop-list">${items}</ul></div>`;
-    }).join("");
+    const ladder = ms.map((m, i) => `<li><span><b>${m.pts} pts</b> · ${esc(m.name)}</span><span>${esc(m.look)}</span></li>`).join("");
     return `<div class="card locker">
-      <h3>🎽 Locker Room <small>earn credits by picking right</small></h3>
-      <p class="hint">1 credit per correct game pick, plus bonus credits from the season questions. Credits only go up.</p>
+      <h3>🏆 Locker Room <small>your card levels up with points</small></h3>
+      <p class="hint">Each new milestone adds to the look, and the points leader's card catches fire.</p>
       <div class="locker-grid">${cards}</div>
-      <details><summary>Shop prices</summary><div class="shop">${menu}</div></details>
+      <details><summary>Milestone ladder</summary><ul class="shop-list">${ladder}</ul></details>
     </div>`;
   }
 

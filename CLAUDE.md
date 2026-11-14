@@ -152,10 +152,9 @@ Standings shows a Watermelon Corner card: the melon gets bitten a bit more with 
 `python3 tools/make_card.py` redraws `img/og-card.png` (record, each friend's points, and the most recent game's player grades) and bumps the `?v=`
 number on `og:image` in index.html. Run it after every game entry, and commit the image with index.html.
 
-## Characters & Locker Room
-Each friend has a cartoon character (`characters` in data.json) shown on Standings.
-- **Credits:** 1 per correct game pick, plus bonus points from the season questions (the closest-record bonus is not counted). Computed by `S.credits()` in scoring.js. Credits only go up.
-- **Shop:** `shop` in data.json lists jerseys, hats and backgrounds with costs. Free items cost 0.
-- **Spending:** `characters[friend]` stores what is equipped. The cost of equipped items is subtracted from earned credits. `node tools/check.js` errors if someone has spent more than they earned.
-- To change someone's look, edit their entry in `characters` (e.g. `"jersey": "navy"`), then check and publish.
-- Avatars animate (bobbing and dribbling). Reduced-motion users see them still.
+## Characters & Locker Room (milestones)
+Each friend has a sports-card style bust on Standings. Looks upgrade at point milestones (`milestones` in data.json,
+names and descriptions there). Upgrades stack. Visual upgrades are drawn in `avatar()` in app.js by level (1 to 6).
+- `characters[friend]` sets the jersey `color` and `number`. Edit it to change a look, then check and publish.
+- The points leader (or all tied leaders, if they have points) gets the animated flaming background.
+- Credits and the shop were removed in favour of milestones.

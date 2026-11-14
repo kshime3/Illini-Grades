@@ -211,27 +211,6 @@
     return data.roster.filter((p) => p.name.toLowerCase().split(" ").includes(t));
   }
 
-  // ---- Character credits ----
-  // 1 credit per correct game pick + bonus points from the season questions (not the closest-record bonus).
-  // Customizations cost credits from data.shop; "spent" is the total cost of what is currently equipped.
-  function credits(data) {
-    const lb = leaderboard(data);
-    const shop = data.shop || {};
-    const out = {};
-    lb.rows.forEach((r) => {
-      const bonusQs = Object.entries(r.bonus).filter(([k]) => k !== "il_record").reduce((s, [, v]) => s + (v || 0), 0);
-      const earned = r.correct + bonusQs;
-      const c = (data.characters || {})[r.friend] || {};
-      let spent = 0;
-      ["jersey", "hat", "court"].forEach((cat) => {
-        const item = ((shop[cat] || {})[c[cat]]) || {};
-        spent += item.cost || 0;
-      });
-      out[r.friend] = { earned, spent, available: earned - spent };
-    });
-    return out;
-  }
-
-  return { credits, SCALE, VALUE, parseGrade, toLetter, tier, isPlayed, outcome, record, parseRecord,
+  return { SCALE, VALUE, parseGrade, toLetter, tier, isPlayed, outcome, record, parseRecord,
     impliedRecord, leaderboard, averages, allGames, STAFF, validate, findPlayer };
 });
