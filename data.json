@@ -300,7 +300,35 @@
         "Ross": "L",
         "Don": "L"
       },
-      "result": null
+      "result": {
+        "illinois": 99,
+        "opponent": 78,
+        "grades": {
+          "Andrej Stojakovic": "S+",
+          "David Mirkovic": "DNP",
+          "Lucas Morillo": "C",
+          "Stefan Vaaks": "B+",
+          "Zvonimir Ivisic": "A",
+          "Tomislav Ivisic": "D-",
+          "Jake Davis": "DNP",
+          "Zavier Zens": "A+",
+          "Quentin Coleman": "S+",
+          "Blake Fagbemi": "DNP",
+          "Lincoln Williams": "DNP",
+          "Quentin McCoy": "DNP",
+          "Landon Davis": "DNP",
+          "Jason Jakstys": "A-",
+          "Ethan Brown": "A"
+        },
+        "coaches": "S+",
+        "crowd": "F",
+        "opposingCoach": "F",
+        "refs": "D",
+        "beverages": "4",
+        "projection": "24-8",
+        "notes": "Career night for andrej",
+        "spotlight": "Andrej Stojakovic"
+      }
     },
     {
       "id": 6,

@@ -15,13 +15,14 @@
   const siteIcon = (s) => (s === "home" ? "🏠" : s === "away" ? "✈️" : "⚖️");
 
   // ---------- small renderers ----------
-  function gradeChip(raw, big) {
+  function gradeChip(raw, big, spark) {
     const p = S.parseGrade(raw);
     if (raw == null || raw === "") return `<span class="g dnp">—</span>`;
     if (p.dnp) return `<span class="g dnp">${esc(raw)}</span>`;
     if (p.value == null) return `<span class="g joke" title="Doesn't count toward average">${esc(raw)}</span>`;
     const goat = p.letter === "S++" ? " 🐐" : "";
-    return `<span class="g ${p.letter[0]}${big ? " big" : ""}" title="${esc(raw)} = ${p.value}">${esc(raw)}${raw.includes("🐐") ? "" : goat}</span>`;
+    const sp = spark && p.letter.startsWith("S") ? " sparkle" : "";
+    return `<span class="g ${p.letter[0]}${big ? " big" : ""}${sp}" title="${esc(raw)} = ${p.value}">${esc(raw)}${raw.includes("🐐") ? "" : goat}</span>`;
   }
   function letterChip(letter, big) {
     if (!letter) return `<span class="g dnp">—</span>`;
@@ -162,13 +163,14 @@
       const graded = data.roster.map((p) => ({ p, raw: (r.grades || {})[p.name], v: S.parseGrade((r.grades || {})[p.name]) }))
         .filter((x) => x.raw && !x.v.dnp);
       const best = graded.filter((x) => x.v.value != null).sort((a, b) => b.v.value - a.v.value)[0];
-      const mini = graded.map((x) => `<span class="mg">${esc(x.p.display)} ${gradeChip(x.raw)}</span>`).join("");
+      const mini = graded.map((x) => `<span class="mg">${esc(x.p.display)} ${gradeChip(x.raw, false, r.spotlight === x.p.name)}</span>`).join("");
       const pickLine = g.picks ? F.map((f) => `${fname(f)} <b class="${g.picks[f] === o ? "ok" : "no"}">${g.picks[f] === o ? "✓" : "✗"}</b>`).join(" · ") : "Postseason — no picks on the line";
       return `<article class="game-card">
         <div class="gc-head ${o}"><div><div class="opp">${o === "W" ? "🔥" : "🧊"} ${esc(g.round ? g.round + ": " : "")}${esc(g.opponent)}</div>
           <div class="date">${siteIcon(g.site)} ${fmtDate(g.date)}${g.tv ? " · " + esc(g.tv) : ""}</div></div>
           <div class="gc-score">${r.illinois}-${r.opponent}<small>${o === "W" ? "WIN" : "LOSS"}</small></div></div>
         <div class="gc-body">
+          ${r.spotlight ? `<div class="spot-banner">✨ Spotlight: <b>${esc(r.spotlight)}</b> · ${esc(r.notes || "")}</div>` : ""}
           <div class="vibes">
             <div class="vibe"><div class="lbl">🍺 Beverages</div><div class="val">${beverages(r.beverages)}</div></div>
             <div class="vibe"><div class="lbl">📈 Projection</div><div class="val">${esc(r.projection || "—")}</div></div>

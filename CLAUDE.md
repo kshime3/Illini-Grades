@@ -158,3 +158,7 @@ names and descriptions there). Upgrades stack. Visual upgrades are drawn in `ava
 - `characters[friend]` sets the jersey `color` and `number`. Edit it to change a look, then check and publish.
 - The points leader (or all tied leaders, if they have points) gets the animated flaming background.
 - Credits and the shop were removed in favour of milestones.
+
+### Spotlight (standout performances)
+Add `"spotlight": "<full roster name>"` to a game's `result` to sparkle that player's grade and show a
+spotlight banner on that game in the Game Log. Use it when the owner calls out a standout game.
