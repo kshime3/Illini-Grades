@@ -322,51 +322,10 @@
     const row = lb.rows.find((r) => r.friend === friend) || { total: 0 };
     const L = levelFor(data, row.total);
     const onFire = leaderNames(lb).includes(friend) && lb.gamesPlayed > 0;
-    const sid = "av" + friend.replace(/\W/g, "") + px;
-    const J = c.color, Jd = shade(J, 0.55), Jl = shade(J, 1.12);
-    const name = friend.toUpperCase();
-    const flames = onFire ? `
-      <g class="flames">
-        <path class="f1" d="M0 400 L0 330 Q18 300 14 262 Q40 292 48 252 Q62 290 82 236 Q96 286 110 246 Q124 282 142 226 Q160 282 176 240 Q190 270 200 214 Q212 270 226 240 Q240 282 258 226 Q276 282 290 246 Q304 286 318 236 Q338 290 352 252 Q360 292 386 330 L400 330 L400 400 Z" fill="url(#${sid}fl)" opacity=".92"/>
-        <path class="f2" d="M0 400 L0 360 Q24 336 30 306 Q52 330 66 298 Q84 330 104 296 Q124 330 150 302 Q170 332 200 290 Q230 332 250 302 Q276 330 296 296 Q316 330 336 298 Q352 330 370 306 Q378 336 400 360 L400 400 Z" fill="#ffb300" opacity=".85"/>
-      </g>` : "";
-    return `<div class="avatar${onFire ? " on-fire" : ""}" style="width:${px}px;height:${px}px" aria-label="${esc(friend)}'s card">
-      <svg viewBox="0 0 400 400">
-        <defs>
-          <linearGradient id="${sid}bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#22457d"/><stop offset="1" stop-color="#08142a"/></linearGradient>
-          <radialGradient id="${sid}spot" cx=".5" cy="0" r=".8"><stop offset="0" stop-color="#ffffff" stop-opacity=".35"/><stop offset="1" stop-color="#ffffff" stop-opacity="0"/></radialGradient>
-          <linearGradient id="${sid}jer" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="${Jl}"/><stop offset=".5" stop-color="${J}"/><stop offset="1" stop-color="${Jd}"/></linearGradient>
-          <radialGradient id="${sid}skin" cx=".38" cy=".35" r=".75"><stop offset="0" stop-color="#f6d2aa"/><stop offset=".7" stop-color="#e2a878"/><stop offset="1" stop-color="#c98a5c"/></radialGradient>
-          <linearGradient id="${sid}hair" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2a1d14"/><stop offset="1" stop-color="#140d08"/></linearGradient>
-          <filter id="${sid}soft"><feGaussianBlur stdDeviation="6"/></filter>
-          <linearGradient id="${sid}fl" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#b71c1c"/><stop offset=".35" stop-color="#ff6d00"/><stop offset=".7" stop-color="#ffb300"/><stop offset="1" stop-color="#fff59d"/></linearGradient>
-        </defs>
-        <rect width="400" height="400" fill="url(#${sid}bg)"/>
-        <rect width="400" height="400" fill="url(#${sid}spot)"/>
-        ${L >= 5 ? `<g opacity=".18"><polygon points="140,0 180,0 300,400 220,400" fill="#fff"/><polygon points="220,0 248,0 340,400 280,400" fill="#fff"/></g>` : ""}
-        ${flames}
-        <path d="M48 400 L48 304 Q52 260 116 244 L160 232 Q200 256 240 232 L284 244 Q348 260 352 304 L352 400 Z" fill="url(#${sid}jer)"/>
-        <path d="M120 300 Q140 340 132 400 M280 300 Q262 340 270 400" fill="none" stroke="#000" stroke-opacity=".18" stroke-width="5"/>
-        <path d="M160 232 Q200 262 240 232" fill="none" stroke="#fff" stroke-width="6" opacity=".85"/>
-        ${L >= 1 ? `<rect x="56" y="318" width="9" height="82" fill="#ffffff" opacity=".9"/><rect x="335" y="318" width="9" height="82" fill="#ffffff" opacity=".9"/>` : ""}
-        ${L >= 3 ? `<path d="M60 316 Q200 300 340 316" fill="none" stroke="#fff" stroke-width="5" opacity=".9"/><path d="M60 330 Q200 314 340 330" fill="none" stroke="#fff" stroke-width="2" opacity=".6"/>` : ""}
-        ${L >= 6 ? `<path d="M160 232 Q200 262 240 232" fill="none" stroke="#FFB81C" stroke-width="7"/>` : ""}
-        <rect x="172" y="194" width="56" height="60" rx="18" fill="url(#${sid}skin)"/>
-        <ellipse cx="152" cy="156" rx="10" ry="15" fill="#e2a878"/><ellipse cx="248" cy="156" rx="10" ry="15" fill="#e2a878"/>
-        <ellipse cx="200" cy="150" rx="50" ry="58" fill="url(#${sid}skin)"/>
-        <ellipse cx="180" cy="176" rx="18" ry="12" fill="#b0653a" opacity=".22" filter="url(#${sid}soft)"/>
-        <ellipse cx="220" cy="176" rx="18" ry="12" fill="#b0653a" opacity=".22" filter="url(#${sid}soft)"/>
-        <path d="M150 136 Q148 96 200 92 Q252 96 250 136 Q240 116 200 112 Q160 116 150 136 Z" fill="url(#${sid}hair)"/>
-        ${L >= 3 ? `<rect x="150" y="122" width="100" height="6" rx="3" fill="${shade(J, 0.45)}"/>` : ""}
-        <path d="M172 136 Q182 130 192 136" fill="none" stroke="#2a1d14" stroke-width="4" stroke-linecap="round"/>
-        <path d="M208 136 Q218 130 228 136" fill="none" stroke="#2a1d14" stroke-width="4" stroke-linecap="round"/>
-        <ellipse cx="182" cy="150" rx="7" ry="5" fill="#fff"/><ellipse cx="218" cy="150" rx="7" ry="5" fill="#fff"/>
-        <circle cx="183" cy="151" r="3.6" fill="#2b1a10"/><circle cx="219" cy="151" r="3.6" fill="#2b1a10"/>
-        <path d="M200 156 Q194 176 202 180" fill="none" stroke="#8a4f2c" stroke-width="2.6" stroke-linecap="round"/>
-        <path d="M186 194 Q200 202 214 194" fill="none" stroke="#7a2e22" stroke-width="3.2" stroke-linecap="round"/>
-        ${L >= 2 ? `<rect x="128" y="300" width="144" height="34" rx="6" fill="#ffffff"/><text x="200" y="324" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="22" font-weight="700" fill="${shade(J, 0.35)}" letter-spacing="2">${esc(name.slice(0, 9))}</text>` : ""}
-        ${L >= 4 ? `<text x="200" y="392" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="92" font-weight="700" fill="#ffffff" opacity=".16">${c.number}</text><circle cx="268" cy="272" r="15" fill="#FFB81C"/><text x="268" y="279" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="17" font-weight="700" fill="#0b1a33">C</text>` : ""}
-      </svg></div>`;
+    const slug = friend.toLowerCase().replace(/\W/g, "");
+    const src = `img/portraits/${slug}-L${L}${onFire ? "-fire" : ""}.svg`;
+    return `<div class="avatar${onFire ? " on-fire" : ""}" style="width:${px}px;height:${px}px">
+      <img src="${src}" alt="${esc(friend)}'s card" width="${px}" height="${px}" loading="lazy"></div>`;
   }
 
   function lockerRoomCard(data) {
@@ -382,7 +341,7 @@
         <div class="locker-name">${esc(f)}${badge(f)}</div>
         <div class="locker-credits"><b>${row.total}</b> pts</div>
         <div class="locker-sub">${cur ? esc(cur.name) + " · " + esc(cur.look) : "Base look"}</div>
-        <div class="locker-sub">${next ? (next.pts - row.total) + " pts to " + esc(next.name) : "Max level"}${leader ? " · 🔥 on fire" : ""}</div></div>`;
+        <div class="locker-sub">${next ? (next.pts - row.total) + (next.pts - row.total === 1 ? " pt" : " pts") + " to " + esc(next.name) : "Max level"}${leader ? " · 🔥 on fire" : ""}</div></div>`;
     }).join("");
     const ladder = ms.map((m, i) => `<li><span><b>${m.pts} pts</b> · ${esc(m.name)}</span><span>${esc(m.look)}</span></li>`).join("");
     return `<div class="card locker">
