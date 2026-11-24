@@ -385,7 +385,34 @@
         "Ross": "W",
         "Don": "W"
       },
-      "result": null
+      "result": {
+        "illinois": 133,
+        "opponent": 83,
+        "grades": {
+          "Andrej Stojakovic": "S",
+          "David Mirkovic": "DNP",
+          "Lucas Morillo": "A",
+          "Stefan Vaaks": "A+",
+          "Zvonimir Ivisic": "C",
+          "Tomislav Ivisic": "B+",
+          "Jake Davis": "DNP",
+          "Zavier Zens": "B",
+          "Quentin Coleman": "S+",
+          "Blake Fagbemi": "D",
+          "Lincoln Williams": "A",
+          "Quentin McCoy": "D",
+          "Landon Davis": "C+",
+          "Jason Jakstys": "B+",
+          "Ethan Brown": "A"
+        },
+        "coaches": "S+",
+        "crowd": "D",
+        "opposingCoach": "F-",
+        "refs": "A",
+        "beverages": "2",
+        "projection": "25-7",
+        "notes": "New all-time big ten points record. Winthrop are baddies"
+      }
     },
     {
       "id": 8,
